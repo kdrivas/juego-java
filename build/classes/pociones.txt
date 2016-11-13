@@ -1,0 +1,3 @@
+Potion of Health,50,POCION,1
+
+Potion of full Health,100,POCION,1

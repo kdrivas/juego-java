@@ -1,0 +1,10 @@
+Buckler,5,ARMADURA,2
+
+Cape,4,ARMADURA,2
+
+Robe,4,ARMADURA,2
+Red Armor,5,ARMADURA,2
+Black Armor,5,ARMADURA,2
+Rock Armor,10,ARMADURA,3
+Big Buckler,5,ARMADURA,4
+Black cape,5,ARMADURA,4

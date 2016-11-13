@@ -1,0 +1,12 @@
+fork(),5,10,ARMA,2
+Small Axe,10,20,ARMA,2
+
+Short Bow,5,15,ARMA,2
+
+Mace,15,25,ARMA,3
+
+Small Sword,20,30,ARMA,3
+Medium Axe,20,30,ARMA,3
+Two-Handed Sword,50,80,ARMA,4
+
+Big Sword,60,80,ARMA,4

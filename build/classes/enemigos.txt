@@ -1,0 +1,11 @@
+Zombie,25,5,1,1
+
+Skeleton,20,2,0,1
+
+Skeleton Captain,25,5,2,2
+Scavenger,15,4,3,2
+
+Fallen one,30,10,5,3
+Blood Knight,40,30,10,3
+Advocate,50,20,15,4
+The Dark Lord,100,25,20,4

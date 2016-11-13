@@ -1,0 +1,138 @@
+<Controlador.GestorArtefactos>
+  <objetos>
+    <Model.Arma>
+      <nombre>fork()</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>2</espacio>
+      <tipo>ARMA</tipo>
+      <danoMin>5.0</danoMin>
+      <danoMax>10.0</danoMax>
+    </Model.Arma>
+    <Model.Arma>
+      <nombre>Small Axe</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>2</espacio>
+      <tipo>ARMA</tipo>
+      <danoMin>10.0</danoMin>
+      <danoMax>20.0</danoMax>
+    </Model.Arma>
+    <Model.Arma>
+      <nombre>Short Bow</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>2</espacio>
+      <tipo>ARMA</tipo>
+      <danoMin>5.0</danoMin>
+      <danoMax>15.0</danoMax>
+    </Model.Arma>
+    <Model.Arma>
+      <nombre>Mace</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>3</espacio>
+      <tipo>ARMA</tipo>
+      <danoMin>15.0</danoMin>
+      <danoMax>25.0</danoMax>
+    </Model.Arma>
+    <Model.Arma>
+      <nombre>Small Sword</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>3</espacio>
+      <tipo>ARMA</tipo>
+      <danoMin>20.0</danoMin>
+      <danoMax>30.0</danoMax>
+    </Model.Arma>
+    <Model.Arma>
+      <nombre>Medium Axe</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>3</espacio>
+      <tipo>ARMA</tipo>
+      <danoMin>20.0</danoMin>
+      <danoMax>30.0</danoMax>
+    </Model.Arma>
+    <Model.Arma>
+      <nombre>Two-Handed Sword</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>4</espacio>
+      <tipo>ARMA</tipo>
+      <danoMin>50.0</danoMin>
+      <danoMax>80.0</danoMax>
+    </Model.Arma>
+    <Model.Arma>
+      <nombre>Big Sword</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>4</espacio>
+      <tipo>ARMA</tipo>
+      <danoMin>60.0</danoMin>
+      <danoMax>80.0</danoMax>
+    </Model.Arma>
+    <Model.Armadura>
+      <nombre>Buckler</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>2</espacio>
+      <tipo>ARMADURA</tipo>
+      <puntosDefensa>5</puntosDefensa>
+    </Model.Armadura>
+    <Model.Armadura>
+      <nombre>Cape</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>2</espacio>
+      <tipo>ARMADURA</tipo>
+      <puntosDefensa>4</puntosDefensa>
+    </Model.Armadura>
+    <Model.Armadura>
+      <nombre>Robe</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>2</espacio>
+      <tipo>ARMADURA</tipo>
+      <puntosDefensa>4</puntosDefensa>
+    </Model.Armadura>
+    <Model.Armadura>
+      <nombre>Red Armor</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>2</espacio>
+      <tipo>ARMADURA</tipo>
+      <puntosDefensa>5</puntosDefensa>
+    </Model.Armadura>
+    <Model.Armadura>
+      <nombre>Black Armor</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>2</espacio>
+      <tipo>ARMADURA</tipo>
+      <puntosDefensa>5</puntosDefensa>
+    </Model.Armadura>
+    <Model.Armadura>
+      <nombre>Rock Armor</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>3</espacio>
+      <tipo>ARMADURA</tipo>
+      <puntosDefensa>10</puntosDefensa>
+    </Model.Armadura>
+    <Model.Armadura>
+      <nombre>Big Buckler</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>4</espacio>
+      <tipo>ARMADURA</tipo>
+      <puntosDefensa>5</puntosDefensa>
+    </Model.Armadura>
+    <Model.Armadura>
+      <nombre>Black cape</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>4</espacio>
+      <tipo>ARMADURA</tipo>
+      <puntosDefensa>5</puntosDefensa>
+    </Model.Armadura>
+    <Model.Pocion>
+      <nombre>Potion of Health</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>1</espacio>
+      <tipo>POCION</tipo>
+      <puntosDeCuracion>50</puntosDeCuracion>
+    </Model.Pocion>
+    <Model.Pocion>
+      <nombre>Potion of full Health</nombre>
+      <caracterImp>A</caracterImp>
+      <espacio>1</espacio>
+      <tipo>POCION</tipo>
+      <puntosDeCuracion>100</puntosDeCuracion>
+    </Model.Pocion>
+  </objetos>
+</Controlador.GestorArtefactos>

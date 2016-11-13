@@ -1,0 +1,3 @@
+ALIADOS:2
+ALIADO:nombre aliado1/CONSEJOS:5@Primer consejo.4@Segundo Consejo.1@Tercer Consejo
+ALIADO:nombre aliado2/CONSEJOS:4@Primer consejo.2@Segundo Consejo.3@Tercer Consejo
