@@ -25,6 +25,8 @@ public class GestorTeclado implements KeyListener{
     public boolean derecha;
     public boolean salir;
     
+    public static final GestorTeclado objTeclado = new GestorTeclado();
+    
     //Settea las teclas presionadas y liberadas dentro del arreglo de teclas
     public void actualizar(){
         arriba = teclas[KeyEvent.VK_W];
@@ -41,6 +43,7 @@ public class GestorTeclado implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
+        System.out.println("lkashdkljasd");
         teclas[e.getKeyCode()] = true;
     }
 

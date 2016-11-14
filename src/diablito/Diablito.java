@@ -11,7 +11,6 @@ import Controlador.GestorLaberinto;
 import java.util.Scanner;
 import Model.*;
 import Vista.*;
-import Vista.Menu;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;

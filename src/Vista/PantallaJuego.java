@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -17,19 +18,23 @@ import javax.swing.JPanel;
  * @author Carlos
  */
 public class PantallaJuego extends javax.swing.JFrame {
-     public BufferStrategy bs;
+    public BufferStrategy bs;
+    ImageIcon icono;
     /**
      * Creates new form PantallaPrincipal
      */
     public PantallaJuego(String titulo, Renderizador sd) {
         initComponents();
         
-        System.out.println("#kasjdkasdasjdka");
+        icono = new ImageIcon("../src/imagenes/icono.png");
+        
         setTitle(titulo);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLayout(new BorderLayout());
+        setIconImage(icono.getImage());
         add(sd, BorderLayout.CENTER);
+        
         pack();
         setLocationRelativeTo(null);
         setVisible(true);

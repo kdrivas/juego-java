@@ -13,6 +13,11 @@ import java.util.HashMap;
  * @author Carlos
  */
 public class HojaSprites {
+    
+    
+    ////////NO TE CONCENTRES EN ESTA CLASE SALVO QUE SEA PARA AÑADIR MAS SPRITES
+    
+    
     private static final int ANCHO_SPRITE = 48;
     private static final int ALTO_SPRITE = 64;
     
@@ -41,8 +46,10 @@ public class HojaSprites {
 //        potion = sheet.crop(384,0,48,64);
         hashMap.put("PARED", new Sprite(imagenHoja.getSubimage(0, 0, 48, 64)));
         hashMap.put("ADENTRO", new Sprite(imagenHoja.getSubimage(48, 0, 48, 64)));
-        hashMap.put("JUGADOR_ARRIBA", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
-        hashMap.put("JUGADOR_ABAJO", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
+        hashMap.put("VACIO", new Sprite(imagenHoja.getSubimage(48, 0, 48, 64)));
+        hashMap.put("ANTERIOR", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
+        hashMap.put("SIGUIENTE", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
+        hashMap.put("AVATAR", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
         hashMap.put("JUGADOR_IZQUIERDA", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
         hashMap.put("JUGADOR_DERECHA", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
         hashMap.put("JUGADOR_CAMINA0", new Sprite(imagenHoja.getSubimage(336, 0, 48, 64)));

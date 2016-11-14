@@ -5,10 +5,27 @@
  */
 package Controlador;
 
+import Vista.CargadorRecursos;
+import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Carlos
  */
-public class Raton {
+public class GestorCursor {
+    public final Cursor cursor;
     
+    public static final GestorCursor objCursor = new GestorCursor();
+    
+    private GestorCursor(){
+        Toolkit configuracion = Toolkit.getDefaultToolkit();
+        BufferedImage icono = CargadorRecursos.cargarImagenTransparente("../src/imagenes/cursor.png");
+    
+        Point punta = new Point(0, 0);
+        cursor = configuracion.createCustomCursor(icono, punta, "cursor");
+    }
 }

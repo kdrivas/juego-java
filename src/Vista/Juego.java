@@ -11,7 +11,6 @@ import Controlador.GestorLaberinto;
 import java.util.Scanner;
 import Model.*;
 import Vista.*;
-import Vista.Menu;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -36,9 +35,8 @@ public class Juego {
     
     private boolean fin = false;
     private boolean meMovi;
-    private Menu menu = new Menu();
     private PantallaBienvenida pantallaInicio;
-    private GestorLaberinto glab = new GestorLaberinto();
+    //private GestorLaberinto glab = new GestorLaberinto(new HojaSprites("asdadsa", 243, 342));
     private int nivelActual = 0;
             private Avatar pj = new Avatar();
             private Vector<Laberinto> niveles = new Vector<>();
@@ -53,7 +51,7 @@ public class Juego {
     static final int CANT_NIVELES = 3;
 
     public Juego() {
-        niveles = glab.crear(20, 20, pj);
+        //niveles = glab.crear(20, 20, pj);
         
         
     }
@@ -1294,20 +1292,6 @@ public class Juego {
     }
 
     /**
-     * @return the menu
-     */
-    public Menu getMenu() {
-        return menu;
-    }
-
-    /**
-     * @param menu the menu to set
-     */
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
-
-    /**
      * @return the pantallaInicio
      */
     public PantallaBienvenida getPantallaInicio() {
@@ -1321,19 +1305,7 @@ public class Juego {
         this.pantallaInicio = pantallaInicio;
     }
 
-    /**
-     * @return the glab
-     */
-    public GestorLaberinto getGlab() {
-        return glab;
-    }
-
-    /**
-     * @param glab the glab to set
-     */
-    public void setGlab(GestorLaberinto glab) {
-        this.glab = glab;
-    }
+    
 
     /**
      * @return the nivelActual

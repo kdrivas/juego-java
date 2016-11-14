@@ -7,13 +7,17 @@
 package Controlador;
 
 import Model.Avatar;
+import Model.Celda;
 
 import Model.Laberinto;
+import java.awt.Graphics;
+import java.util.HashMap;
 import java.util.Vector;
 import java.util.Random;
 import java.util.LinkedList;
 import java.util.List;
-
+import Vista.*;
+import Model.*;
 /**
  *
  * @author alulab14
@@ -22,24 +26,28 @@ public class GestorLaberinto {
 
     static final int CANT_LABERINTOS = 3;
     private Vector<Laberinto> arrLaberintos;
-
-    public GestorLaberinto() {
+    private HojaSprites hoja;
+    
+    public GestorLaberinto(HojaSprites hoja) {
+        Avatar personaje = new Avatar();
+        
         arrLaberintos = new Vector<Laberinto>();
+        crear(11, 11, personaje);
+        this.hoja = hoja;
     }
     
-    public Vector<Laberinto> crear(int M, int N, Avatar personaje) {
+    public void crear(int M, int N, Avatar personaje) {
         
         for (int i = 0; i < CANT_LABERINTOS; i++) {
             Laberinto objLab = new Laberinto();
             Random rd = new Random();
             //objLab.inicializar(2 * (int)(rd.nextDouble()*10 + M) + 1, 2 * (int)(rd.nextDouble()*10 + N) + 1, personaje);
-			objLab.inicializar(11,11,personaje);
+            objLab.inicializar(11,11,personaje);
             generadorMapa(objLab);
             objLab.setPct_enemigo(0.09);
             //objLab.imprimir();
             arrLaberintos.add(objLab);
         }
-        return arrLaberintos;
     }
 
     private void generadorMapa(Laberinto objLab) {
@@ -258,6 +266,31 @@ public class GestorLaberinto {
         }
         else{
             return false;
+        }
+    }
+    
+    public void actualizar(){
+        
+    }
+    
+    public void dibujar(Graphics g, int nivel){
+        
+        //Se recorre todo el vector de tiles
+        for(int y = 0; y < this.arrLaberintos.elementAt(nivel).getN(); y++){
+            for(int x = 0; x < this.arrLaberintos.elementAt(nivel).getM(); x++){
+                String estado = obtenerEstado(x, y, nivel);
+                g.drawImage(hoja.SpriteKey(estado), x*48, y*64, null);
+            }
+        }       
+    }
+    
+    public String obtenerEstado(int x, int y, int nivel){
+        if(x >= 0 && x < arrLaberintos.get(0).getM() && y >= 0 && y < arrLaberintos.get(0).getN()){
+            Celda celda = arrLaberintos.get(nivel).getCeldaLaberinto(x, y);      
+            return celda.getEstado();
+        }
+        else{
+            return "VACIO";
         }
     }
 }

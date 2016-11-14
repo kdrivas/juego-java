@@ -45,7 +45,7 @@ public class PantallaBienvenida extends javax.swing.JFrame {
         this.jPanel1.setSize(menuWidth, menuHeight);
         this.jPanel1.setVisible(true);
         bs = this.getBufferStrategy();
-setFocusable(true);
+        setFocusable(true);
         Imagen imagen = new Imagen();
         jPanel1.add(imagen).repaint();
         j = new JFrame();
@@ -125,85 +125,10 @@ setFocusable(true);
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        VentanaJuego vj = new VentanaJuego("lalala", 800, 400);
+        VentanaJuego vj = new VentanaJuego("lalala", 1100, 600);
         vj.iniciarJuego();
-        //PantallaPrincipal p = new PantallaPrincipal();
-//        JFrame p= new JFrame();
-//        try {
-//            p.setTitle("Diablito");
-//            p.setSize(1024, 780);
-//            p.setResizable(false);
-//            p.setVisible(true);
-//            p.add(new PanelInformacion());
-//            p.setLocationRelativeTo(null);
-//            p.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            this.dispose();
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//        }
-//Juego juego = new Juego();
-//mov = 'p';
-//while(true){
-//        try {
-//            //j.getContentPane().removeAll();
-//            if(flag){
-//            j.setTitle("Maze");
-//            j.setSize(1920, 1080);
-//            
-//            j.add(new Board(juego, mov));
-//            j.setLocationRelativeTo(null);
-//            j.setVisible(true);
-//            j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            this.dispose();
-//            //Debo habilitar el keylistener
-//            if(mover){
-//            String ax = JOptionPane.showInputDialog("Ingrese un comando: ");
-//                    JOptionPane.showMessageDialog(null, "El comando ingresado es: " + ax);
-//                     mov = ax.charAt(0);
-//                     if(ax.equals("MOVER")){
-//                         mover = false;
-//                         flag = false;
-//                     }
-//            }
-//            else
-//                flag = false;
-//            }
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//            
-//        }
-//}
+       
     }//GEN-LAST:event_jButton1ActionPerformed
-
-public void    keyPressed (KeyEvent e){
-    System.out.println("asdasdasakakjkakakakakakkakakakkakakakka");
-}
-
-public void keyReleased(KeyEvent e) {
-    System.out.println("lasklhdjklashdjkashdjkashdjkas");
-    if(!mover){
-        
-        if(e.getKeyCode()== KeyEvent.VK_D){
-            System.out.println("lasklhdjklashdjkashdjkashdjkas");
-            flag = true;
-            mov = 'd';
-        }
-        else if(e.getKeyCode()== KeyEvent.VK_A){
-            flag = true;
-            mov = 'a';
-        }
-        else if(e.getKeyCode()== KeyEvent.VK_S){
-            flag = true;
-            mov = 's';
-        }
-        else if(e.getKeyCode()== KeyEvent.VK_W){
-            flag = true;
-            mov = 'w';
-        }
-    }
-
-    }
-
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
