@@ -32,8 +32,24 @@ public class GestorAvatar {
         this.hoja = hoja;
     }
     
-    public void actualizar(){
-        
+    public void actualizar(Teclado teclado){
+        System.out.println("ENTRE A GESTOR JUEGO");
+        if(teclado.arriba){
+            System.out.println("asdkjshda");
+            setPosicionY(getPosicionY() - 1);
+        }
+        else if(teclado.abajo){
+            setPosicionY(getPosicionY() + 1);
+        }
+        else if(teclado.izquierda){
+            setPosicionX(getPosicionX() - 1);
+        }
+        else if(teclado.derecha){
+            setPosicionX(getPosicionX() + 1);
+        }
+        else{
+            System.out.println("NO REGISTRO");
+        }
     }
     
     public void dibujar(Graphics g){

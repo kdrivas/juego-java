@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 /**
@@ -36,8 +37,7 @@ public class VentanaJuego extends Canvas implements Runnable{
     private String titulo;
     private int ancho;
     private int alto;
-    
-    private Renderizador sd;
+
     //Esta es la ventana como me la pediste, creada con la plantilla por defecto de java
 
     private GestorJuego ge;
@@ -56,11 +56,12 @@ public class VentanaJuego extends Canvas implements Runnable{
         funcionando = true;
         setFocusable(true);
         
+        ImageIcon icono = new ImageIcon("../src/imagenes/icono.png");
         
         ventana = new JFrame(titulo);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setResizable(false);
-        //ventana.setIconImage(icono.getImage());
+        ventana.setIconImage(icono.getImage());
         ventana.setLayout(new BorderLayout());
         ventana.add(this, BorderLayout.CENTER);
        

@@ -29,23 +29,7 @@ public class GestorJuego{
     public void actualizar(Teclado teclado) {
         
         //ESTO NO FUNCIONA, AL PARECER EL KEY LISTENER NO SE AÑADE CORRECTAMENTE A LA PANTALLA
-        System.out.println("ENTRE A GESTOR JUEGO");
-        if(teclado.arriba){
-            System.out.println("asdkjshda");
-            gestorAvatar.setPosicionY(gestorAvatar.getPosicionY() - 1);
-        }
-        else if(teclado.abajo){
-            gestorAvatar.setPosicionY(gestorAvatar.getPosicionY() + 1);
-        }
-        else if(teclado.izquierda){
-            gestorAvatar.setPosicionX(gestorAvatar.getPosicionX() - 1);
-        }
-        else if(teclado.derecha){
-            gestorAvatar.setPosicionX(gestorAvatar.getPosicionX() + 1);
-        }
-        else{
-            System.out.println("NO REGISTRO");
-        }
+        
     }
 
     //Dibuja todas las cosas, por el momento llama a gestorMapa y gestorAvatar
