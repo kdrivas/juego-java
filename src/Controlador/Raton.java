@@ -16,12 +16,10 @@ import javax.swing.ImageIcon;
  *
  * @author Carlos
  */
-public class GestorCursor {
+public class Raton {
     public final Cursor cursor;
     
-    public static final GestorCursor objCursor = new GestorCursor();
-    
-    private GestorCursor(){
+    public Raton(){
         Toolkit configuracion = Toolkit.getDefaultToolkit();
         BufferedImage icono = CargadorRecursos.cargarImagenTransparente("../src/imagenes/cursor.png");
     

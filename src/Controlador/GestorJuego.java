@@ -26,21 +26,21 @@ public class GestorJuego{
         gestorAvatar = new GestorAvatar(hoja, 0, 0);
     }
 
-    public void actualizar() {
+    public void actualizar(Teclado teclado) {
         
         //ESTO NO FUNCIONA, AL PARECER EL KEY LISTENER NO SE AÑADE CORRECTAMENTE A LA PANTALLA
         System.out.println("ENTRE A GESTOR JUEGO");
-        if(GestorTeclado.objTeclado.arriba){
+        if(teclado.arriba){
             System.out.println("asdkjshda");
             gestorAvatar.setPosicionY(gestorAvatar.getPosicionY() - 1);
         }
-        else if(GestorTeclado.objTeclado.abajo){
+        else if(teclado.abajo){
             gestorAvatar.setPosicionY(gestorAvatar.getPosicionY() + 1);
         }
-        else if(GestorTeclado.objTeclado.izquierda){
+        else if(teclado.izquierda){
             gestorAvatar.setPosicionX(gestorAvatar.getPosicionX() - 1);
         }
-        else if(GestorTeclado.objTeclado.derecha){
+        else if(teclado.derecha){
             gestorAvatar.setPosicionX(gestorAvatar.getPosicionX() + 1);
         }
         else{
@@ -56,8 +56,8 @@ public class GestorJuego{
         g.setColor(Color.green);
         
         //INDICADOR PARA VER SI EL AVATAR AVANZA,, NO FUNCA PRUEBALO SE QUEDARA SOLO MARCANDO LA POSICION 1, 1
-        g.drawString("X : " + gestorAvatar.getPosicionX(), 20, 20);
-        g.drawString("Y : " + gestorAvatar.getPosicionY(), 20, 35);
+        System.out.println("X = " + gestorAvatar.getPosicionX());
+        System.out.println("Y = " + gestorAvatar.getPosicionY());
 
     }
     

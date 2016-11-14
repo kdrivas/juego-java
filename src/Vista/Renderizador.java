@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 /**
  *
@@ -20,21 +21,23 @@ public class Renderizador extends Canvas{
     private int ancho;
     private int alto;
     
+    public Teclado teclado;
+    
     public Renderizador(int ancho, int alto){
         this.ancho = ancho;
-        this.alto = alto;     
+        this.alto = alto;         
         
-        //Inicializo el canvas, que es mi lienzo donde dibujare
-        setPreferredSize(new Dimension(getAncho(), getAlto()));
         
         //ESTO DEBERIA FUNCIONAR, PERO CREO QUE NO
-        addKeyListener(GestorTeclado.objTeclado);
+        addKeyListener(GestorControles.teclado);
         ////////////////////////////////////7
         System.out.println("CONTROL");
         //Esto es solo por si nos piden de modificacion en el lab, crea un cursor, no pruebes esto, es secundario
-        setCursor(GestorCursor.objCursor.cursor);
+        setIgnoreRepaint(true);
+        //Inicializo el canvas, que es mi lienzo donde dibujare
+        setPreferredSize(new Dimension(getAncho(), getAlto()));
+        //setCursor(.cursor);
         setFocusable(true);
-        requestFocusInWindow();
         requestFocus();
     }
     
@@ -54,6 +57,8 @@ public class Renderizador extends Canvas{
         
         //ACAAA
         ge.dibujar(g);
+        
+        Toolkit.getDefaultToolkit().sync();
         
         g.dispose();
         

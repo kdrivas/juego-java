@@ -17,15 +17,14 @@ import javax.swing.JPanel;
  *
  * @author Carlos
  */
-public class PantallaJuego extends javax.swing.JFrame {
+public class PantallaJuego extends JFrame {
     public BufferStrategy bs;
     ImageIcon icono;
     /**
      * Creates new form PantallaPrincipal
      */
     public PantallaJuego(String titulo, Renderizador sd) {
-        initComponents();
-        
+        initComponents();        
         icono = new ImageIcon("../src/imagenes/icono.png");
         
         setTitle(titulo);

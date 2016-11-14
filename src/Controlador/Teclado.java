@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import java.awt.Canvas;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -12,10 +13,10 @@ import java.awt.event.KeyListener;
  *
  * @author Carlos
  */
-public class GestorTeclado implements KeyListener{
+public class Teclado implements KeyListener{
 
     //Fije numero de teclas que se pueden presionar, pudo haber sido 4 pero porsiaca meti muchas mas teclas
-    private final static int numeroTeclas = 120;
+    private final static int numeroTeclas = 256;
    //Dentro del array se indicaran que teclas se presionaron, cada letra se guardara en el espacio de su codigo ascii dentro de teclas
     private final boolean[] teclas = new boolean[numeroTeclas];
     
@@ -25,9 +26,7 @@ public class GestorTeclado implements KeyListener{
     public boolean derecha;
     public boolean salir;
     
-    public static final GestorTeclado objTeclado = new GestorTeclado();
-    
-    private GestorTeclado(){
+    public Teclado(){
         System.out.println("kjasdjas");
     }
     

@@ -126,7 +126,7 @@ public class PantallaBienvenida extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         VentanaJuego vj = new VentanaJuego("lalala", 1100, 600);
-        vj.iniciarJuego();
+        vj.inicializar();
        
     }//GEN-LAST:event_jButton1ActionPerformed
     

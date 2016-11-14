@@ -5,6 +5,15 @@
  */
 package Vista;
 import Controlador.*;
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Toolkit;
+import java.awt.image.BufferStrategy;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 /**
  *
  * @author Carlos
@@ -20,9 +29,9 @@ import Controlador.*;
 
 
 
-public class VentanaJuego {
+public class VentanaJuego extends Canvas implements Runnable{
     
-    private boolean funcionando;
+    private volatile boolean funcionando = false;
     
     private String titulo;
     private int ancho;
@@ -30,61 +39,98 @@ public class VentanaJuego {
     
     private Renderizador sd;
     //Esta es la ventana como me la pediste, creada con la plantilla por defecto de java
-    private PantallaJuego ventana;
+
     private GestorJuego ge;
+    private Teclado teclado;
+    private JFrame ventana;
+    private Thread thread;
     
     public VentanaJuego(String titulo, int ancho, int alto){
         this.titulo = titulo;
         this.ancho = ancho;
         this.alto = alto;
-    }
-    
-    public void iniciarJuego(){
-        //Todo  comienza con esta parte
-        //setteo la variable para que no se salga el programa
-        funcionando = true;
         
-        //Inicializo todos mis gestores
-        inicializar();
-        //De este bucle no sale hasta que el jugador pierda --> ve al bucle aca esta todo el funcionamiento
-        buclePrincipal();
+        setPreferredSize(new Dimension(ancho, alto));
+        teclado = new Teclado();
+        addKeyListener(teclado);
+        funcionando = true;
+        setFocusable(true);
+        
+        
+        ventana = new JFrame(titulo);
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setResizable(false);
+        //ventana.setIconImage(icono.getImage());
+        ventana.setLayout(new BorderLayout());
+        ventana.add(this, BorderLayout.CENTER);
+       
+        ventana.pack();
+        ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);
     }
     
     //Los inicializo mis gestores
-    private void inicializar(){
+    public synchronized void inicializar(){
         //PRIMERO ENTRA A ESTE CONTRUCTOR, ACA ESTA EL KEYLISTENER
-        sd = new Renderizador(ancho, alto);
-        
-        //creo la ventana
-        ventana = new PantallaJuego(titulo, sd);
+    
         ge = new GestorJuego();
+        thread = new Thread(this, "Graficos");
+        thread.start();
+    }    
+        
+    private synchronized void detener(){
+        funcionando = false;
+        try{
+            thread.join();
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
     }
     
     //Basicamente llamo a una funcion actualizar del gestor juego por el momento contiene cosas relacionandas al mapa
     //y al movimiento del jugador
     private void actualizar(){
         //ESTO NO FUNCIONA COMO DEBERIA, DE HECHO NI SIQUIERA ENTRA SEGUN LOS PRINTF QUE HICE
-        GestorTeclado.objTeclado.actualizar();
-        
+        teclado.actualizar();           
         
         //Aca si entra, esto llama a mi actualizador del gestor juego
-        ge.actualizar();
+        ge.actualizar(teclado);
     }
     
     //Lo mismo que actualizar(), contiene mi sd, que basicamente es mi renderizador donde se dibujara todo
     private void dibujar(){
         //Aca dibuja :D, esto si funca
-        sd.dibujar(ge);
+        BufferStrategy buffer = getBufferStrategy();
+        
+        if(buffer == null){
+            createBufferStrategy(3);
+            return;
+        }
+        
+        Graphics g = buffer.getDrawGraphics();
+        
+        g.setColor(Color.black);
+        g.fillRect(0, 0, ancho, alto);
+        
+        //ACAAA
+        ge.dibujar(g);
+        
+        Toolkit.getDefaultToolkit().sync();
+        
+        g.dispose();
+        
+        buffer.show();
     }
     
     //Aca esta como funciona --> solo debes saber que este bucle dibujara y actualizara 60 veces por segundo
     //los calculos y variables que aparecen aca basicamente controlan eso, no cambies nada de esto sino el juego
     //ira mas rapido o mas lento
-    private void buclePrincipal(){
+    @Override
+    public void run(){
         ////////////////////////////////////////////////////////////////////
         //Fija numero de actulizaciones del frame pos 1 seg
         final int NS_POR_SEGUNDO = 1000000000;
-        final int APS_OBJETIVO = 60;
+        final int APS_OBJETIVO = 120;
         final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO / APS_OBJETIVO;
         
         long referenciaActualizacion = System.nanoTime();
@@ -95,7 +141,7 @@ public class VentanaJuego {
         ///////////////////////////////////////////////////////////////////
         
         //Ajustar el foco para que el jugador no tenga que hacer click otra vez dentro de la pantalla para que empiece a jugar
-        
+        requestFocus();
         while(funcionando){
             
             //////////////////////////////////////////////////////////////
@@ -123,4 +169,5 @@ public class VentanaJuego {
         }
         
     }
+
 }
