@@ -29,7 +29,7 @@ public class GestorJuego{
     public void actualizar(Teclado teclado) {
         
         //ESTO NO FUNCIONA, AL PARECER EL KEY LISTENER NO SE AÑADE CORRECTAMENTE A LA PANTALLA
-        
+        gestorAvatar.actualizar(teclado);
     }
 
     //Dibuja todas las cosas, por el momento llama a gestorMapa y gestorAvatar
