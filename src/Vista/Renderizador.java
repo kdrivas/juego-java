@@ -30,10 +30,11 @@ public class Renderizador extends Canvas{
         //ESTO DEBERIA FUNCIONAR, PERO CREO QUE NO
         addKeyListener(GestorTeclado.objTeclado);
         ////////////////////////////////////7
-        
+        System.out.println("CONTROL");
         //Esto es solo por si nos piden de modificacion en el lab, crea un cursor, no pruebes esto, es secundario
         setCursor(GestorCursor.objCursor.cursor);
         setFocusable(true);
+        requestFocusInWindow();
         requestFocus();
     }
     

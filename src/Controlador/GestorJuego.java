@@ -23,12 +23,13 @@ public class GestorJuego{
     
     public GestorJuego(){
         gestorMapa = new GestorLaberinto(hoja); 
-        gestorAvatar = new GestorAvatar(hoja, 1, 1);
+        gestorAvatar = new GestorAvatar(hoja, 0, 0);
     }
 
     public void actualizar() {
         
         //ESTO NO FUNCIONA, AL PARECER EL KEY LISTENER NO SE AÑADE CORRECTAMENTE A LA PANTALLA
+        System.out.println("ENTRE A GESTOR JUEGO");
         if(GestorTeclado.objTeclado.arriba){
             System.out.println("asdkjshda");
             gestorAvatar.setPosicionY(gestorAvatar.getPosicionY() - 1);
@@ -42,18 +43,21 @@ public class GestorJuego{
         else if(GestorTeclado.objTeclado.derecha){
             gestorAvatar.setPosicionX(gestorAvatar.getPosicionX() + 1);
         }
+        else{
+            System.out.println("NO REGISTRO");
+        }
     }
 
     //Dibuja todas las cosas, por el momento llama a gestorMapa y gestorAvatar
     public void dibujar(Graphics g) {
-        gestorMapa.dibujar(g, 0);
+        gestorMapa.dibujar(g, 0, (int)gestorAvatar.getPosicionX(), (int)gestorAvatar.getPosicionY());
         gestorAvatar.dibujar(g);
         
         g.setColor(Color.green);
         
         //INDICADOR PARA VER SI EL AVATAR AVANZA,, NO FUNCA PRUEBALO SE QUEDARA SOLO MARCANDO LA POSICION 1, 1
         g.drawString("X : " + gestorAvatar.getPosicionX(), 20, 20);
-        g.drawString("Y : " + gestorAvatar.getPosicionY(), 20, 30);
+        g.drawString("Y : " + gestorAvatar.getPosicionY(), 20, 35);
 
     }
     

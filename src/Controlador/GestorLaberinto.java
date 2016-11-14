@@ -273,13 +273,13 @@ public class GestorLaberinto {
         
     }
     
-    public void dibujar(Graphics g, int nivel){
+    public void dibujar(Graphics g, int nivel, int posicionX, int posicionY){
         
         //Se recorre todo el vector de tiles
         for(int y = 0; y < this.arrLaberintos.elementAt(nivel).getN(); y++){
             for(int x = 0; x < this.arrLaberintos.elementAt(nivel).getM(); x++){
                 String estado = obtenerEstado(x, y, nivel);
-                g.drawImage(hoja.SpriteKey(estado), x*48, y*64, null);
+                g.drawImage(hoja.SpriteKey(estado), x*48 - posicionX, y*64 - posicionY, null);
             }
         }       
     }

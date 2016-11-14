@@ -27,6 +27,10 @@ public class GestorTeclado implements KeyListener{
     
     public static final GestorTeclado objTeclado = new GestorTeclado();
     
+    private GestorTeclado(){
+        System.out.println("kjasdjas");
+    }
+    
     //Settea las teclas presionadas y liberadas dentro del arreglo de teclas
     public void actualizar(){
         arriba = teclas[KeyEvent.VK_W];
