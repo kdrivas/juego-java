@@ -72,13 +72,13 @@ public class GestorAvatar {
         if(teclado.arriba){          
             direccion = 'n';
             if(!enColision(gt, nivel, (int)posicionX, (int)(posicionY - 64))){
-                enMovimiento = true;
+                setEnMovimiento(true);
                 modificaPosicionAvatarEnLaberinto(gt, nivel, (int)posicionX, (int)(posicionY - 64)); 
                 posicionY -= 64;
                               
             }
             else{
-                enMovimiento = false;
+                setEnMovimiento(false);
             }
         }
         else if(teclado.abajo){
@@ -87,10 +87,10 @@ public class GestorAvatar {
             if(!enColision(gt, nivel, (int)posicionX, (int)(posicionY + 64))){
                 modificaPosicionAvatarEnLaberinto(gt, nivel, (int)posicionX , (int)(posicionY + 64)); 
                 posicionY += 64;
-                enMovimiento = true;               
+                setEnMovimiento(true);               
             }
             else{
-                enMovimiento = false;
+                setEnMovimiento(false);
             }
         }
         else if(teclado.izquierda){
@@ -99,11 +99,11 @@ public class GestorAvatar {
             if(!enColision(gt, nivel, (int)(posicionX - 48), (int)posicionY)){
                 modificaPosicionAvatarEnLaberinto(gt, nivel, (int)posicionX - 48, (int)posicionY); 
                 posicionX -= 48;
-                enMovimiento = true;
+                setEnMovimiento(true);
                   
             }
             else{
-                enMovimiento = false;
+                setEnMovimiento(false);
             }
         }
         else if(teclado.derecha){
@@ -112,15 +112,15 @@ public class GestorAvatar {
             if(!enColision(gt, nivel, (int)(posicionX + 48), (int)posicionY)){
                 modificaPosicionAvatarEnLaberinto(gt, nivel, (int)posicionX + 48, (int)posicionY); 
                 posicionX += 48;
-                enMovimiento = true;
+                setEnMovimiento(true);
                   
             }
             else{
-                enMovimiento = false;
+                setEnMovimiento(false);
             }
         }
         else{
-            enMovimiento = false;
+            setEnMovimiento(false);
         }
         
         escogeSprite();
@@ -146,7 +146,7 @@ public class GestorAvatar {
     private void escogeSprite(){
         if (direccion == 'n') {
             nombreSprite = "JUGADOR_ARRIBA";
-            if (enMovimiento) {
+            if (isEnMovimiento()) {
                 System.out.println("lalalalalala");
                 if (animacion % FRAMES > FRAMES / 2) {
                     nombreSprite = "SIGUIENTE";
@@ -156,7 +156,7 @@ public class GestorAvatar {
             }
         } else if (direccion == 's') {
             nombreSprite = "JUGADOR_ABAJO";
-            if (enMovimiento) {
+            if (isEnMovimiento()) {
                 if (animacion % FRAMES > FRAMES / 2) {
                     nombreSprite = "SIGUIENTE";
                 } else {
@@ -165,7 +165,7 @@ public class GestorAvatar {
             }
         } else if (direccion == 'o') {
             nombreSprite = "JUGADOR_IZQUIERDA";
-            if (enMovimiento) {
+            if (isEnMovimiento()) {
                 if (animacion % FRAMES > FRAMES / 2) {
                     nombreSprite = "SIGUIENTE";
                 } else {
@@ -174,7 +174,7 @@ public class GestorAvatar {
             }
         } else if (direccion == 'e') {
             nombreSprite = "JUGADOR_DERECHA";
-            if (enMovimiento) {
+            if (isEnMovimiento()) {
                 if (animacion % FRAMES > FRAMES / 2) {
                     nombreSprite = "SIGUIENTE";
                 } else {
@@ -228,5 +228,19 @@ public class GestorAvatar {
      */
     public void setAvatar(Avatar avatar) {
         this.avatar = avatar;
+    }
+
+    /**
+     * @return the enMovimiento
+     */
+    public boolean isEnMovimiento() {
+        return enMovimiento;
+    }
+
+    /**
+     * @param enMovimiento the enMovimiento to set
+     */
+    public void setEnMovimiento(boolean enMovimiento) {
+        this.enMovimiento = enMovimiento;
     }
 }

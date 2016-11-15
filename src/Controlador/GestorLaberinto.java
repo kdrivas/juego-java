@@ -36,6 +36,11 @@ public class GestorLaberinto {
     //temporal
     public Rectangle rec;
     
+    private int nivel;
+    private boolean cambioNivel = true;
+    private boolean avanzaNivel = true;
+    private boolean retrocedeNivel = false;
+    
     public GestorLaberinto(HojaSprites hoja) {
         Avatar personaje = new Avatar();
         
@@ -277,11 +282,61 @@ public class GestorLaberinto {
         }
     }
     
-    public void actualizar(){
-        
+    private int actualizoNivel(GestorAvatar gestorAvatar){
+        Laberinto laberinto = arrLaberintos.get(getNivel());
+        Celda celdaInicio   = laberinto.getCeldaLaberinto(laberinto.getIniX(), laberinto.getIniY());
+        Celda celdaFin      = laberinto.getCeldaLaberinto(laberinto.getFinX(), laberinto.getFinY());
+        if(gestorAvatar.isEnMovimiento()){
+        if(celdaFin.getObjEntidad() instanceof Avatar){
+            if( getNivel() < 2){
+                avanzaNivel = true;
+                cambioNivel = true;
+                return 1;
+            }
+            else
+                return 0;
+        }
+        else if(celdaInicio.getObjEntidad() instanceof Avatar){
+            if( getNivel() > 0){
+                retrocedeNivel = true;
+                cambioNivel = true;
+                return -1;
+            }
+            else
+                return 0;
+        }
+        else
+            return 0;
+        }
+        else
+            return 0;
     }
     
-    public void dibujar(Graphics g, int nivel, int posicionX, int posicionY){
+    private void colocarAvatar(GestorAvatar gestorAvatar){
+        if(cambioNivel){
+            Laberinto laberinto = arrLaberintos.get(getNivel());
+            if(avanzaNivel){
+                laberinto.getCeldaLaberinto(laberinto.getIniX(), laberinto.getIniY()).setObjEntidad(gestorAvatar.getAvatar());
+                gestorAvatar.setPosicionX(laberinto.getIniX() * Constantes.ANCHO_JUGADOR);
+                gestorAvatar.setPosicionY(laberinto.getIniY() * Constantes.ALTO_JUGADOR);      
+            }
+            else if(retrocedeNivel){
+                laberinto.getCeldaLaberinto(laberinto.getFinX(), laberinto.getFinY()).setObjEntidad(gestorAvatar.getAvatar());
+                gestorAvatar.setPosicionX(laberinto.getFinX() * Constantes.ANCHO_JUGADOR);
+                gestorAvatar.setPosicionY(laberinto.getFinY() * Constantes.ALTO_JUGADOR);   
+            }      
+            avanzaNivel = false;
+            retrocedeNivel = false;
+            cambioNivel = false;
+        }
+    }
+    
+    public void actualizar(GestorAvatar gestorAvatar){
+        colocarAvatar(gestorAvatar);
+        setNivel(getNivel() + actualizoNivel(gestorAvatar));
+    }
+    
+    public void dibujar(Graphics g, int posicionX, int posicionY){
         
         //Se recorre todo el vector de tiles
         for(int y = 0; y < this.arrLaberintos.elementAt(nivel).getN(); y++){
@@ -318,5 +373,19 @@ public class GestorLaberinto {
         int y = MARGEN_Y - posicionY + altoJugador;
         
         return new Rectangle();
+    }
+
+    /**
+     * @return the nivel
+     */
+    public int getNivel() {
+        return nivel;
+    }
+
+    /**
+     * @param nivel the nivel to set
+     */
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
     }
 }
