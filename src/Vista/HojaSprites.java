@@ -48,14 +48,15 @@ public class HojaSprites {
         hashMap.put("PARED", new Sprite(imagenHoja.getSubimage(0, 0, 48, 64)));
         hashMap.put("ADENTRO", new Sprite(imagenHoja.getSubimage(48, 0, 48, 64)));
         hashMap.put("VACIO", new Sprite(imagenHoja.getSubimage(48, 0, 48, 64)));
-        hashMap.put("ANTERIOR", new Sprite(imagenHoja.getSubimage(92, 0, 48, 64)));
-        hashMap.put("SIGUIENTE", new Sprite(imagenHoja.getSubimage(92, 0, 48, 64)));
+        hashMap.put("ANTERIOR", new Sprite(imagenHoja.getSubimage(96, 0, 48, 64)));
+        hashMap.put("SIGUIENTE", new Sprite(imagenHoja.getSubimage(144, 0, 48, 64)));
         hashMap.put("JUGADOR_ABAJO", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
         hashMap.put("JUGADOR_ARRIBA", new Sprite(imagenHoja.getSubimage(528, 0, 48, 64)));
         hashMap.put("JUGADOR_DERECHA", new Sprite(imagenHoja.getSubimage(480, 0, 48, 64)));
         hashMap.put("JUGADOR_IZQUIERDA", new Sprite(imagenHoja.getSubimage(432, 0, 48, 64)));
         hashMap.put("JUGADOR_CAMINA0", new Sprite(imagenHoja.getSubimage(336, 0, 48, 64)));
         hashMap.put("JUGADOR_CAMINA1", new Sprite(imagenHoja.getSubimage(288, 0, 48, 64)));
+        hashMap.put("ALIADO", new Sprite(imagenHoja.getSubimage(576, 0, 48, 64)));
     }
     
     public BufferedImage SpriteKey(String key){

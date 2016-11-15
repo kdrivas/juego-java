@@ -19,13 +19,13 @@ import java.util.List;
 public class Aliado extends Entidad {
 
     private Saco mochila;
-    private ArrayList<String> consejos;
+    private ArrayList<Consejo> consejos;
     private ArrayList<Integer> nivelconsejos;
 
     public Aliado() {
         super();
         mochila = new Saco();
-        consejos = new ArrayList<String>();
+        consejos= new ArrayList<Consejo>();
         nivelconsejos = new ArrayList<Integer>();
         caracterImp = 'C';
         setNombre("Hugo");
@@ -71,29 +71,20 @@ public class Aliado extends Entidad {
     /**
      * @return the consejos
      */
-    public ArrayList<String> getConsejos() {
+    public ArrayList<Consejo> getConsejos() {
         return consejos;
     }
 
     /**
      * @param consejos the consejos to set
      */
-    public void setConsejos(ArrayList<String> consejos) {
+    public void setConsejos(ArrayList<Consejo> consejos) {
         this.consejos = consejos;
     }
 
     /**
-     * @return the nivelconsejos
+     * @return the consejos
      */
-    public ArrayList<Integer> getNivelconsejos() {
-        return nivelconsejos;
-    }
 
-    /**
-     * @param nivelconsejos the nivelconsejos to set
-     */
-    public void setNivelconsejos(ArrayList<Integer> nivelconsejos) {
-        this.nivelconsejos = nivelconsejos;
-    }
 
 }

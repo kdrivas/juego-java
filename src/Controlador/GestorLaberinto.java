@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import FACILIDADES.Aliado;
 import Model.Avatar;
 import Model.Celda;
 
@@ -365,10 +366,8 @@ public class GestorLaberinto {
             } else if (celda.getObjEntidad() != null) {
                 if (celda.getObjEntidad() instanceof Enemigo) {
                     return "ENEMIGO";
-
-                } else {
-                    return celda.getEstado();
-                }
+                } else if(celda.getObjEntidad() instanceof Aliado)
+                    return "ALIADO";                                                    
             } else {
                 return celda.getEstado();
             }

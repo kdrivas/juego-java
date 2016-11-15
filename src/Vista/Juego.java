@@ -402,7 +402,7 @@ public class Juego {
                 Aliado al = (Aliado) e;
                 Random rn = new Random();
                 int ind = (int) (rn.nextDouble() * al.getConsejos().size());
-                String consejo = al.getConsejos().get(ind);
+                String consejo = al.getConsejos().get(ind).getMensaje();
                 System.out.println();
                 System.out.println();
                 System.out.println("Te encontrate con un aliado");
@@ -663,7 +663,7 @@ public class Juego {
                     case 'c':
                         Random rn = new Random();
                         int ind = (int) (rn.nextDouble() * aliado.getConsejos().size());
-                        String consejo = aliado.getConsejos().get(ind);
+                        String consejo = aliado.getConsejos().get(ind).getMensaje();
                         System.out.println(consejo);
                         salida = true;
                         break;
@@ -749,82 +749,6 @@ public class Juego {
                     case 'u':
                         menuMochila(pj);
                         break;
-                }
-
-            }
-
-        }
-
-    }
-
-    public ArrayList<Aliado> cargarAliado(String archivo, ArrayList<Pocion> listapoc, ArrayList<Arma> listaArma, ArrayList<Armadura> listArmadura) throws FileNotFoundException, IOException {
-        String cadena;
-        String palabras[];
-        ArrayList<Aliado> aliados = new ArrayList<>();
-        int i = 0;
-        FileReader f = new FileReader(archivo);
-        BufferedReader b = new BufferedReader(f);
-        cadena = b.readLine();
-        StringTokenizer st = new StringTokenizer(cadena, ":");
-        st.nextToken();//ALIADOS
-        int numAliados = Integer.parseInt(st.nextToken());
-        for (i = 0; i < numAliados; i++) {
-            if ((cadena = b.readLine()) != null) {
-                Aliado al = new Aliado();
-                StringTokenizer stokenlinea = new StringTokenizer(cadena, ":/.@");
-                stokenlinea.nextToken();// ALIADO
-                String nombre = stokenlinea.nextToken();//nombre nombrealiado
-                StringTokenizer stnombre = new StringTokenizer(nombre, " ");
-                stnombre.nextToken();// salto etiqueta nombre
-                // si existiera nombre con espacios
-                nombre = "";
-                while (stnombre.hasMoreTokens()) {
-                    nombre.concat(stnombre.nextToken());
-                }
-                al.setNombre(nombre);
-                stokenlinea.nextToken();// CONSEJOS   
-                while (stokenlinea.hasMoreTokens()) {
-                    al.getNivelconsejos().add(Integer.parseInt(st.nextToken()));
-                    al.getConsejos().add(st.nextToken());
-                }
-                int ind;
-                // Ahora lleno la bolsa de objetos del aliado
-                for (int j = 0; j < 3; j++) {// aleatoriamiente agrego 3 pociones al aliado
-                    Random rn = new Random();
-                    ind = (int) (rn.nextDouble() * listapoc.size());
-                    al.getMochila().agregarArtefacto(listapoc.get(ind));
-
-                }
-                for (int j = 0; j < 3; j++) {// aleatoriamiente agrego 3 armas al aliado
-                    Random rn = new Random();
-                    ind = (int) (rn.nextDouble() * listaArma.size());
-                    al.getMochila().agregarArtefacto(listaArma.get(ind));
-                }
-                for (int j = 0; j < 3; j++) {// aleatoriamiente agrego 3 armaduras al aliado
-                    Random rn = new Random();
-                    ind = (int) (rn.nextDouble() * listArmadura.size());
-                    al.getMochila().agregarArtefacto(listArmadura.get(ind));
-                }
-                aliados.add(al);
-            }
-
-        }
-
-        b.close();
-
-        return aliados;
-
-    }
-
-    public void ordenarConsejos(Aliado al) {
-        String consejo;
-        for (int i = 0; i < al.getConsejos().size(); i++) {
-            for (int j = 1; j < al.getConsejos().size() - 1; j++) {
-                if (al.getNivelconsejos().get(i) > al.getNivelconsejos().get(j)) {
-                    consejo = al.getConsejos().get(i);
-                    //al.getConsejos().get(i)=al.getConsejos().get(j);
-                    //al.getConsejos().get(j). = consejo;
-
                 }
             }
         }

@@ -37,10 +37,12 @@ public class VentanaJuego extends Canvas implements Runnable {
     private JFrame ventana;
     private Thread thread;
     VentanaInformacion informacion;
+    
     volatile GestorLaberinto gestorMapa;
     GestorAvatar gestorAvatar;
     GestorArtefactos gestorArtefactos;
     GestorEnemigos gestorEnemigos;
+    GestorAliado gestorAliados;
     HojaSprites hoja = new HojaSprites();
 
     public VentanaJuego(String titulo, int ancho, int alto) {
@@ -72,6 +74,8 @@ public class VentanaJuego extends Canvas implements Runnable {
         gestorArtefactos = new GestorArtefactos();
         // Setteo Gestor Enemigo
         gestorEnemigos = new GestorEnemigos();
+        //Setteo Gestor Aliado
+        gestorAliados = new GestorAliado();
         //Aca creo lo que dibuja el mapa
         createBufferStrategy(3);
     }
@@ -81,9 +85,9 @@ public class VentanaJuego extends Canvas implements Runnable {
         //PRIMERO ENTRA A ESTE CONTRUCTOR, ACA ESTA EL KEYLISTENER
         gestorArtefactos.inicializar(gestorMapa);
         gestorEnemigos.inicializar(gestorMapa);
+        gestorAliados.inicializar(gestorMapa, gestorArtefactos);
         thread = new Thread(this, "Graficos");
         thread.start();
-
     }
 
     private synchronized void detener() {
