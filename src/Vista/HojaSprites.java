@@ -48,8 +48,9 @@ public class HojaSprites {
         hashMap.put("ADENTRO", new Sprite(imagenHoja.getSubimage(48, 0, 48, 64)));
         hashMap.put("VACIO", new Sprite(imagenHoja.getSubimage(48, 0, 48, 64)));
         hashMap.put("ANTERIOR", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
-        hashMap.put("SIGUIENTE", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
-        hashMap.put("AVATAR", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
+        hashMap.put("SIGUIENTE", new Sprite(imagenHoja.getSubimage(48, 0, 48, 64)));
+        hashMap.put("JUGADOR_ABAJO", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
+        hashMap.put("JUGADOR_ARRIBA", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
         hashMap.put("JUGADOR_IZQUIERDA", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
         hashMap.put("JUGADOR_DERECHA", new Sprite(imagenHoja.getSubimage(192, 0, 48, 64)));
         hashMap.put("JUGADOR_CAMINA0", new Sprite(imagenHoja.getSubimage(336, 0, 48, 64)));

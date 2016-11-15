@@ -18,15 +18,23 @@ import java.util.LinkedList;
 import java.util.List;
 import Vista.*;
 import Model.*;
+import java.awt.Color;
+import java.awt.Rectangle;
 /**
  *
  * @author alulab14
  */
 public class GestorLaberinto {
-
+    private static final int MARGEN_X = Constantes.ANCHO_VENTANA / 2 - Constantes.ANCHO_JUGADOR / 2;
+    private static final int MARGEN_Y = Constantes.ALTO_VENTANA / 2 - Constantes.ALTO_JUGADOR / 2;
+    
     static final int CANT_LABERINTOS = 3;
+    
     private Vector<Laberinto> arrLaberintos;
     private HojaSprites hoja;
+    
+    //temporal
+    public Rectangle rec;
     
     public GestorLaberinto(HojaSprites hoja) {
         Avatar personaje = new Avatar();
@@ -279,7 +287,18 @@ public class GestorLaberinto {
         for(int y = 0; y < this.arrLaberintos.elementAt(nivel).getN(); y++){
             for(int x = 0; x < this.arrLaberintos.elementAt(nivel).getM(); x++){
                 String estado = obtenerEstado(x, y, nivel);
-                g.drawImage(hoja.SpriteKey(estado), x*48 - posicionX , y*64 - posicionY, null);
+           
+                int posX = x * Constantes.ANCHO_JUGADOR - posicionX + MARGEN_X;
+                int posY = y * Constantes.ALTO_JUGADOR - posicionY + MARGEN_Y;
+                
+                
+                g.setColor(Color.red);
+                g.drawImage(hoja.SpriteKey(estado), posX, posY, null);
+                if(x == 3 && y == 3){
+                    rec = new Rectangle(posX, posY, 48, 64);
+                    g.drawRect(rec.x, rec.y, rec.width, rec.height);
+                }
+                
             }
         }       
     }
@@ -292,5 +311,12 @@ public class GestorLaberinto {
         else{
             return "VACIO";
         }
+    }
+    
+    public Rectangle obtenerBorde( int posicionX, int posicionY, int anchoJugador, int altoJugador){
+        int x = MARGEN_X - posicionX + anchoJugador;
+        int y = MARGEN_Y - posicionY + altoJugador;
+        
+        return new Rectangle();
     }
 }
