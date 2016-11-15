@@ -38,7 +38,11 @@ public class Laberinto {
             for (int j = 0; j < this.getM(); j++) {
                 a = this.getCeldaLaberinto(j, i).getEstado();
                 if (a.equals("ADENTRO")) {
-                    System.out.print('O');
+                    if(this.getCeldaLaberinto(j, i).getObjEntidad() instanceof Avatar){
+                        System.out.print('H');
+                    }
+                    else
+                        System.out.print('O');
                 } else if (a.equals("ANTERIOR")) {
                     System.out.print('I');
                 } else if (a.equals("SIGUIENTE")) {

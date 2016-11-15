@@ -28,9 +28,9 @@ public class GestorLaberinto {
     private static final int MARGEN_X = Constantes.ANCHO_VENTANA / 2 - Constantes.ANCHO_JUGADOR / 2;
     private static final int MARGEN_Y = Constantes.ALTO_VENTANA / 2 - Constantes.ALTO_JUGADOR / 2;
     
-    static final int CANT_LABERINTOS = 3;
+    public static final int CANT_LABERINTOS = 3;
     
-    private Vector<Laberinto> arrLaberintos;
+    public Vector<Laberinto> arrLaberintos;
     private HojaSprites hoja;
     
     //temporal
@@ -304,7 +304,7 @@ public class GestorLaberinto {
     }
     
     public String obtenerEstado(int x, int y, int nivel){
-        if(x >= 0 && x < arrLaberintos.get(0).getM() && y >= 0 && y < arrLaberintos.get(0).getN()){
+        if(x >= 0 && x < arrLaberintos.get(nivel).getM() && y >= 0 && y < arrLaberintos.get(nivel).getN()){
             Celda celda = arrLaberintos.get(nivel).getCeldaLaberinto(x, y);      
             return celda.getEstado();
         }

@@ -53,7 +53,16 @@ public class GestorAvatar {
         avatar = new Avatar();
     }
     
-    public void actualizar(Teclado teclado,  GestorLaberinto gt){
+    public void modificaPosicionAvatarEnLaberinto(GestorLaberinto gt, int nivel, int posFuturaX, int posFuturaY){
+        Celda celdaSiguiente = gt.arrLaberintos.get(nivel).getCeldaLaberinto(posFuturaX / 48, posFuturaY / 64);
+        Celda celdaActual = gt.arrLaberintos.get(nivel).getCeldaLaberinto((int)posicionX / 48, (int)posicionY / 64);
+        celdaActual.setObjEntidad(null);
+        celdaSiguiente.setObjEntidad(getAvatar());
+        
+        gt.arrLaberintos.get(nivel).imprimir();
+    }
+    
+    public void actualizar(Teclado teclado,  GestorLaberinto gt, int nivel){
         if (animacion < 32767) {
             animacion++;
         } else {
@@ -62,32 +71,53 @@ public class GestorAvatar {
         
         if(teclado.arriba){          
             direccion = 'n';
-            if(!fueraMapa(gt)){
-            //ACA DEBES COMPROBAR COLISION
-            enMovimiento = true;
-            posicionY -= 1;
+            if(!enColision(gt, nivel, (int)posicionX, (int)(posicionY - 64))){
+                enMovimiento = true;
+                modificaPosicionAvatarEnLaberinto(gt, nivel, (int)posicionX, (int)(posicionY - 64)); 
+                posicionY -= 64;
+                              
+            }
+            else{
+                enMovimiento = false;
             }
         }
         else if(teclado.abajo){
             direccion = 's';
             
-            //COLISION
-            posicionY += 1;
-            enMovimiento = true;
+            if(!enColision(gt, nivel, (int)posicionX, (int)(posicionY + 64))){
+                modificaPosicionAvatarEnLaberinto(gt, nivel, (int)posicionX , (int)(posicionY + 64)); 
+                posicionY += 64;
+                enMovimiento = true;               
+            }
+            else{
+                enMovimiento = false;
+            }
         }
         else if(teclado.izquierda){
             direccion = 'o';
             
-            //COLISION
-            posicionX -= 1;
-            enMovimiento = true;
+            if(!enColision(gt, nivel, (int)(posicionX - 48), (int)posicionY)){
+                modificaPosicionAvatarEnLaberinto(gt, nivel, (int)posicionX - 48, (int)posicionY); 
+                posicionX -= 48;
+                enMovimiento = true;
+                  
+            }
+            else{
+                enMovimiento = false;
+            }
         }
         else if(teclado.derecha){
             direccion = 'e';
             
-            //COLISION
-            posicionX += 1;
-            enMovimiento = true;
+            if(!enColision(gt, nivel, (int)(posicionX + 48), (int)posicionY)){
+                modificaPosicionAvatarEnLaberinto(gt, nivel, (int)posicionX + 48, (int)posicionY); 
+                posicionX += 48;
+                enMovimiento = true;
+                  
+            }
+            else{
+                enMovimiento = false;
+            }
         }
         else{
             enMovimiento = false;
@@ -170,14 +200,33 @@ public class GestorAvatar {
         this.posicionY = posicionY;
     }
     
-    private boolean fueraMapa(GestorLaberinto gtr){
-        int posicionFuturaX = (int)posicionX;
-        int posicionFuturaY = (int)posicionY;
+    private boolean enColision(GestorLaberinto gtr, int nivel, int posFuturaX, int posFuturaY){
         
-        //else if(direccion ==)
         
-        //Rectangle rec = lab.obtenerBorde(posicionFuturaX, posicionFuturaY, ALTO_SPRITE, ANCHO_SPRITE);
-        return gtr.rec.intersects(LIMITE_ARRIBA) || gtr.rec.intersects(LIMITE_ABAJO) || gtr.rec.intersects(LIMITE_IZQUIERDA);
+        //CAMBIAR ACA CUANDO ESTEN LISTOS LOS ENEMIGOS
+        
+        Celda celda = gtr.arrLaberintos.get(nivel).getCeldaLaberinto(posFuturaX / 48, posFuturaY / 64);
+        if(celda.getEstado().equals("PARED")){
+            return true;
+        }
+        else{
+            return false;
+        }
+        //return gtr.rec.intersects(LIMITE_ARRIBA) || gtr.rec.intersects(LIMITE_ABAJO) || gtr.rec.intersects(LIMITE_IZQUIERDA);
        
+    }
+
+    /**
+     * @return the avatar
+     */
+    public Avatar getAvatar() {
+        return avatar;
+    }
+
+    /**
+     * @param avatar the avatar to set
+     */
+    public void setAvatar(Avatar avatar) {
+        this.avatar = avatar;
     }
 }

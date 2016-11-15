@@ -77,6 +77,7 @@ public class VentanaJuego extends Canvas implements Runnable{
         ge = new GestorJuego();
         thread = new Thread(this, "Graficos");
         thread.start();
+
     }    
         
     private synchronized void detener(){
@@ -126,12 +127,13 @@ public class VentanaJuego extends Canvas implements Runnable{
     //Aca esta como funciona --> solo debes saber que este bucle dibujara y actualizara 60 veces por segundo
     //los calculos y variables que aparecen aca basicamente controlan eso, no cambies nada de esto sino el juego
     //ira mas rapido o mas lento
+
     @Override
     public void run(){
         ////////////////////////////////////////////////////////////////////
         //Fija numero de actulizaciones del frame pos 1 seg
         final int NS_POR_SEGUNDO = 1000000000;
-        final int APS_OBJETIVO = 120;
+        final int APS_OBJETIVO = 10;
         final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO / APS_OBJETIVO;
         
         long referenciaActualizacion = System.nanoTime();
