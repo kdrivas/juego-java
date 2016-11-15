@@ -31,18 +31,18 @@ import javax.swing.*;
  */
 public class Juego {
 
-    private boolean inicio = true;
-    
+    private boolean inicio = true;    
     private boolean fin = false;
     private boolean meMovi;
     private PantallaBienvenida pantallaInicio;
     //private GestorLaberinto glab = new GestorLaberinto(new HojaSprites("asdadsa", 243, 342));
     private int nivelActual = 0;
-            private Avatar pj = new Avatar();
-            private Vector<Laberinto> niveles = new Vector<>();
-            private ArrayList<Arma> armas = new ArrayList<>();
-            private ArrayList<Armadura> armaduras = new ArrayList<>();
-            private ArrayList<Pocion> pociones = new ArrayList<>();
+    //atributos avatar, y listas de objetos(laberinto, armas, armaduras y pociones)
+    private Avatar pj = new Avatar();
+    private Vector<Laberinto> niveles = new Vector<>();
+    private ArrayList<Arma> armas = new ArrayList<>();
+    private ArrayList<Armadura> armaduras = new ArrayList<>();
+    private ArrayList<Pocion> pociones = new ArrayList<>();
             
     /**
      * @param args the command line arguments
@@ -51,9 +51,7 @@ public class Juego {
     static final int CANT_NIVELES = 3;
 
     public Juego() {
-        //niveles = glab.crear(20, 20, pj);
-        
-        
+        //niveles = glab.crear(20, 20, pj);                
     }
 
     public void cargarArtefactos(ArrayList<Arma> armas, ArrayList<Armadura> armaduras, ArrayList<Pocion> pociones) {

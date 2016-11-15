@@ -22,7 +22,6 @@ import javax.swing.JFrame;
  * @author Carlos
  */
 public class PantallaBienvenida extends javax.swing.JFrame {
-
     public boolean comandoCorrecto = false;
     private int windowWidth = 1920;
     private int windowHeight = 1080;
@@ -46,10 +45,10 @@ public class PantallaBienvenida extends javax.swing.JFrame {
         this.jPanel1.setVisible(true);
         bs = this.getBufferStrategy();
         setFocusable(true);
+        //clase imagen esta mas abajo (por alguna razon ...)
         Imagen imagen = new Imagen();
         jPanel1.add(imagen).repaint();
-        j = new JFrame();
-        
+        j = new JFrame();        
     }
 
     /**
@@ -122,14 +121,15 @@ public class PantallaBienvenida extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //boton para iniciar el juego
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        VentanaJuego vj = new VentanaJuego("lalala", 1100, 600);
-        vj.inicializar();
-       
+        VentanaJuego vj = new VentanaJuego("DIABLITO", 1100, 600);
+        vj.inicializar();       
     }//GEN-LAST:event_jButton1ActionPerformed
     
+    //boton para cerrar el juego
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -139,25 +139,21 @@ public class PantallaBienvenida extends javax.swing.JFrame {
     public class Imagen extends javax.swing.JPanel {
 
         public Imagen() {
-
             this.setSize(1920, 1080); //se selecciona el tamaño del panel
         }
 
         //Se crea un método cuyo parámetro debe ser un objeto Graphics
         public void paint(Graphics grafico) {
             Dimension height = getSize();
-
             //Se selecciona la imagen que tenemos en el paquete de la //ruta del programa
             ImageIcon Img = new ImageIcon(getClass().getResource("/imagenes/inicio.png"));
-
             //se dibuja la imagen que tenemos en el paquete Images //dentro de un panel
             grafico.drawImage(Img.getImage(), 0, 0, height.width, height.height, null);
-
             setOpaque(false);
             super.paintComponent(grafico);
         }
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

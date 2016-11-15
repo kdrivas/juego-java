@@ -20,37 +20,26 @@ import javax.swing.JPanel;
  * @author Carlos
  */
 
-
-
-
 ///SI QUIERES AÑADIR MAS SPRITES VE A LA CLASE HOJASPRITES, AHI ESTA EL HASHMAP
 //EL ERROR DEL KEY_LISTENER ESTA MAS ABAJO
 //CAMBIE EL GESTOR_LABERINTO, PERO SOLO LE AÑADI UN MOSTRAR
 
-
-
-
 public class VentanaJuego extends Canvas implements Runnable{
     
-    private volatile boolean funcionando = false;
-    
+    private volatile boolean funcionando = false;   
     private String titulo;
     private int ancho;
     private int alto;
-
-    //Esta es la ventana como me la pediste, creada con la plantilla por defecto de java
-
     private GestorJuego ge;
     private Teclado teclado;
     private JFrame ventana;
     private Thread thread;
     
     VentanaInformacion informacion;
-    
+    //atributos gestores de laberintos, avatar y artefactos
     volatile GestorLaberinto gestorMapa;
     GestorAvatar gestorAvatar;
-    GestorArtefactos gestorArtefactos;
-    
+    GestorArtefactos gestorArtefactos;    
     HojaSprites hoja = new HojaSprites();
     
     public VentanaJuego(String titulo, int ancho, int alto){
@@ -83,7 +72,7 @@ public class VentanaJuego extends Canvas implements Runnable{
         gestorMapa = new GestorLaberinto(hoja); 
         gestorMapa.setNivel(0);
         
-        //Sette gestor avatar
+        //Setteo gestor avatar
         gestorAvatar = new GestorAvatar(hoja, gestorMapa.arrLaberintos.get(0).getIniX() * Constantes.ANCHO_JUGADOR, gestorMapa.arrLaberintos.get(0).getIniY() * Constantes.ALTO_JUGADOR);
 
         //Setteo gestor artefactos
@@ -95,12 +84,10 @@ public class VentanaJuego extends Canvas implements Runnable{
     
     //Los inicializo mis gestores
     public synchronized void inicializar(){
-        //PRIMERO ENTRA A ESTE CONTRUCTOR, ACA ESTA EL KEYLISTENER
-        gestorArtefactos.inicializar(gestorMapa);
-        
+        //PRIMERO ENTRA A ESTE CONSTRUCTOR, ACA ESTA EL KEYLISTENER
+        gestorArtefactos.inicializar(gestorMapa);       
         thread = new Thread(this, "Graficos");
         thread.start();
-
     }    
         
     private synchronized void detener(){
