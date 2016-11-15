@@ -27,12 +27,10 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
  *
  */
 public class Diablito {
-
     /**
      * @param args the command line arguments
      */
     //Setteo cantidad de niveles, tambien debe ser modificado en gestor laberinto
-
     public static void main(String[] args) throws IOException {
         Juego juego= new Juego();
         juego.jugar();
