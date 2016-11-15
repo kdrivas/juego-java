@@ -25,11 +25,12 @@ public class HojaSprites {
     private HashMap<String, Sprite> hashMap;
     
     public HojaSprites(){
-        BufferedImage imagenHoja, imagenInformacion, menuSuperior;
+        BufferedImage imagenHoja, imagenInformacion, menuSuperior, menuLateral;
         
         imagenHoja = CargadorRecursos.cargarImagenTransparente("../src/imagenes/todos.png");
         imagenInformacion = CargadorRecursos.cargarImagenTransparente("../src/imagenes/menu1.png");
         menuSuperior = CargadorRecursos.cargarImagenTransparente("../src/imagenes/menuSuperior.png");
+        menuLateral = CargadorRecursos.cargarImagen("../src/imagenes/menuLateral.jpg");
         hashMap = new HashMap();
 //        grass = sheet.crop(48, 0, 48, 64);
 //        avatar = sheet.crop(192, 0, 48, 64);
@@ -57,6 +58,7 @@ public class HojaSprites {
         hashMap.put("JUGADOR_CAMINA0", new Sprite(imagenHoja.getSubimage(336, 0, 48, 64)));
         hashMap.put("JUGADOR_CAMINA1", new Sprite(imagenHoja.getSubimage(288, 0, 48, 64)));
         hashMap.put("ALIADO", new Sprite(imagenHoja.getSubimage(576, 0, 48, 64)));
+        hashMap.put("MENU_LATERAL", new Sprite(menuLateral));
     }
     
     public BufferedImage SpriteKey(String key){

@@ -19,8 +19,8 @@ public class Saco {
     private ArrayList<Artefacto> listaDeArtefactos;
 
     public Saco() {
-        espacioTotal = 20;
-        espacioActual = 20;
+        espacioTotal = 8;
+        espacioActual = 0;
         listaDeArtefactos = new ArrayList<Artefacto>();
     }
 
@@ -49,12 +49,11 @@ public class Saco {
     }
 
     public int agregarArtefacto(Artefacto objeto) {
-        if (objeto.getEspacio() <= espacioActual) {
+        if (espacioActual <= espacioTotal) {
             listaDeArtefactos.add(objeto);
-            espacioActual = espacioActual - objeto.getEspacio();
+            espacioActual = espacioActual + 1;
             return 1;
         } else {
-            System.out.println("No hay espacio suficiente");
             return 0;
         }
     }

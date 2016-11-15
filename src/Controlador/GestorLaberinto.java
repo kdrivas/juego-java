@@ -342,11 +342,7 @@ public class GestorLaberinto {
                 int posY = y * Constantes.ALTO_JUGADOR - posicionY + MARGEN_Y;
 
                 g.setColor(Color.red);
-                g.drawImage(hoja.SpriteKey(estado), posX, posY, null);
-                if (x == 3 && y == 3) {
-                    rec = new Rectangle(posX, posY, 48, 64);
-                    g.drawRect(rec.x, rec.y, rec.width, rec.height);
-                }
+                g.drawImage(hoja.SpriteKey(estado), posX, posY, null);                
                 //this.arrLaberintos.get(nivel).imprimir();
             }
         }

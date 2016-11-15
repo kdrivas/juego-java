@@ -33,6 +33,7 @@ public class Avatar extends Entidad {
         caracterImp = 'X';
         armadura = null;
         arma = null;
+        nombre = "Hugo";
     }
 
     public Avatar(Arma arma) {
@@ -43,6 +44,7 @@ public class Avatar extends Entidad {
         armadura = new Armadura();
         caracterImp = 'X';
         armadura = null;
+        nombre = "Hugo";
     }
 
     /**
