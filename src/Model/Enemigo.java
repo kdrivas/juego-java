@@ -15,7 +15,6 @@ public class Enemigo extends Entidad {
 
     private int fuerza;
     private int defensa;
-    private boolean meMovi;
     
     public Enemigo() {
         super();
@@ -72,19 +71,5 @@ public class Enemigo extends Entidad {
      */
     public void setDefensa(int defensa) {
         this.defensa = defensa;
-    }
-
-    /**
-     * @return the meMovi
-     */
-    public boolean isMeMovi() {
-        return meMovi;
-    }
-
-    /**
-     * @param meMovi the meMovi to set
-     */
-    public void setMeMovi(boolean meMovi) {
-        this.meMovi = meMovi;
     }
 }

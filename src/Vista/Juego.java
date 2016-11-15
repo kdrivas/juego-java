@@ -370,12 +370,6 @@ public class Juego {
         }
     }
 
-    
-
-    
-
-    
-
     public void interactuar(char dir, Avatar pj, Laberinto lab) {// CREADO PARA LA SEGUNDA MODIFICACION
         //Requiriendo la direccion para interactuar
         int x = lab.hallarPosXAvatar();

@@ -41,6 +41,7 @@ public class HojaSprites {
 //        potion = sheet.crop(384,0,48,64);
         hashMap.put("MENU_SUPERIOR", new Sprite(menuSuperior));
         hashMap.put("MENU_INFORMACION", new Sprite(imagenInformacion));
+        hashMap.put("ENEMIGO", new Sprite(imagenHoja.getSubimage(240, 0, 48, 64)));
         hashMap.put("ARMA", new Sprite(imagenHoja.getSubimage(288, 0, 48, 64)));
         hashMap.put("ARMADURA", new Sprite(imagenHoja.getSubimage(336, 0, 48, 64)));
         hashMap.put("POCION", new Sprite(imagenHoja.getSubimage(384, 0, 48, 64)));

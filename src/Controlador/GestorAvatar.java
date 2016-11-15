@@ -200,7 +200,7 @@ public class GestorAvatar {
         //CAMBIAR ACA CUANDO ESTEN LISTOS LOS ENEMIGOS
         
         Celda celda = gtr.arrLaberintos.get(nivel).getCeldaLaberinto(posFuturaX / 48, posFuturaY / 64);
-        if(celda.getEstado().equals("PARED")){
+        if(celda.getEstado().equals("PARED") || celda.getObjEntidad()!=null){
             return true;
         }
         else{

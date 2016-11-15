@@ -12,12 +12,12 @@ import java.util.Random;
  * @author alulab14
  */
 public class Entidad extends ObjetoDeJuego {
-
+    
     protected int vidaMaxima;
     protected int vidaActual;
     protected int nivel;
-    protected Arma arma;
-    
+    protected Arma arma;    
+    private boolean meMovi;
 
     public Entidad() {
         super();
@@ -83,7 +83,6 @@ public class Entidad extends ObjetoDeJuego {
             return true;
         }
         return false;
-
     }
 
     /**
@@ -112,6 +111,19 @@ public class Entidad extends ObjetoDeJuego {
      */
     public void setArma(Arma arma) {
         this.arma = arma;
+    }
+       /**
+     * @return the meMovi
+     */
+    public boolean isMeMovi() {
+        return meMovi;
+    }
+
+    /**
+     * @param meMovi the meMovi to set
+     */
+    public void setMeMovi(boolean meMovi) {
+        this.meMovi = meMovi;
     }
 
     

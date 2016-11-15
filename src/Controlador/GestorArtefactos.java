@@ -60,7 +60,7 @@ public class GestorArtefactos implements Runnable{
         GestorArtefactos g = new GestorArtefactos();
         try {
             XStream xstream = new XStream(new DomDriver());
-            FileReader fr = new FileReader("..\\src\\artefactos.txt");
+            FileReader fr = new FileReader("..//src/artefactos.txt");
             g = (GestorArtefactos) xstream.fromXML(fr);
             fr.close();
         } catch (IOException e) {

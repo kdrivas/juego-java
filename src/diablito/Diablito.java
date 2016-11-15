@@ -30,7 +30,7 @@ public class Diablito {
     /**
      * @param args the command line arguments
      */
-    //Setteo cantidad de niveles, tambien debe ser modificado en gestor laberinto
+    //clase main, se instancia Juego, y se llama a metodo jugar para que se inicie el juego
     public static void main(String[] args) throws IOException {
         Juego juego= new Juego();
         juego.jugar();
