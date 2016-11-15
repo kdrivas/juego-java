@@ -25,7 +25,6 @@ public class Entidad extends ObjetoDeJuego {
         vidaActual = 50;
         arma= new Arma();
         nivel=1;
-
     }  
     
     public Entidad(Arma arma) {
@@ -78,12 +77,8 @@ public class Entidad extends ObjetoDeJuego {
         return (int)dano;
     }
 
-    public boolean muerto() {
-        if (this.getVidaActual() <= 0) {
-            return true;
-        }
-        return false;
-
+    public boolean muerto() {       
+        return (this.getVidaActual() <= 0);
     }
 
     /**
@@ -114,7 +109,6 @@ public class Entidad extends ObjetoDeJuego {
         this.arma = arma;
     }
 
-    
     public void barrita()
     {
         int num = (int)(this.vidaActual*80/this.vidaMaxima);

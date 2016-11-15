@@ -32,6 +32,7 @@ public class Armadura extends Artefacto {
     public void setPuntosDefensa(int puntosDefensa) {
         this.puntosDefensa = puntosDefensa;
     }
+    
     @Override
     public void mostrarDetalle() {
         System.out.println("Nombre:" + this.getNombre());

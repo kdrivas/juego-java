@@ -32,6 +32,7 @@ public class Pocion extends Artefacto {
     public void setPuntosDeCuracion(int puntosDeCuracion) {
         this.puntosDeCuracion = puntosDeCuracion;
     }
+    
     @Override
     public void   mostrarDetalle() {
         System.out.println("Nombre:" + this.getNombre());

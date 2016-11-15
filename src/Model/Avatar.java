@@ -208,6 +208,5 @@ public class Avatar extends Entidad {
         } else {
             System.out.println("Armadura: -");
         }
-
     }
 }

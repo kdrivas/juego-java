@@ -126,9 +126,7 @@ public class Laberinto {
         }
         return -1;
     }
-
-   
-
+    
     public int getM() {
         return M;
     }

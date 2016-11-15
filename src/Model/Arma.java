@@ -22,9 +22,7 @@ public class Arma extends Artefacto {
         danoMax = 0;
         this.setTipo("ARMA"); 
     }
-
     
-
     /**
      * @return the danoMin
      */
@@ -52,6 +50,7 @@ public class Arma extends Artefacto {
     public void setDanoMax(double danoMax) {
         this.danoMax = danoMax;
     }
+    
     @Override
     public void mostrarDetalle(){
         System.out.println("Nombre:"+this.getNombre());

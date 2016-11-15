@@ -34,7 +34,6 @@ public class Enemigo extends Entidad {
         } else {
             nivel = (int) (dn.nextDouble() * (nAvatar + 2));
         }
-
     }
 
     /**
@@ -56,8 +55,7 @@ public class Enemigo extends Entidad {
         System.out.println("Enemigo: " + this.getNombre());
         System.out.println("Nivel: " + this.getNivel());
         this.barrita();
-        System.out.println("Vida:"+this.getVidaActual()+"/"+this.getVidaMaxima());
-        
+        System.out.println("Vida:"+this.getVidaActual()+"/"+this.getVidaMaxima());        
     }
 
     /**
