@@ -16,12 +16,6 @@ import java.awt.Rectangle;
 public class GestorAvatar {
     private static final int FRAMES = 30;
     
-    private static final int ANCHO_PANTALLA = 1100;
-    private static final int ALTO_PANTALLA = 600;
-    
-    private static final int ANCHO_SPRITE = 48;
-    private static final int ALTO_SPRITE = 64;
-    
     private final Rectangle LIMITE_ARRIBA = new Rectangle(Constantes.CENTRO_VENTANA_X - 22, Constantes.CENTRO_VENTANA_Y - 5, Constantes.ANCHO_JUGADOR - 6, 1);
     private final Rectangle LIMITE_ABAJO = new Rectangle(Constantes.CENTRO_VENTANA_X - 22, Constantes.CENTRO_VENTANA_Y + 31, Constantes.ANCHO_JUGADOR - 6, 1);
     private final Rectangle LIMITE_IZQUIERDA = new Rectangle(Constantes.CENTRO_VENTANA_X - 24, Constantes.CENTRO_VENTANA_Y - 2, 1, Constantes.ALTO_JUGADOR / 2);
@@ -127,8 +121,8 @@ public class GestorAvatar {
     }
     
     public void dibujar(Graphics g){
-        int centroX = ANCHO_PANTALLA / 2 - ANCHO_SPRITE / 2;
-        int centroY = ALTO_PANTALLA / 2 - ALTO_SPRITE / 2;
+        int centroX = Constantes.ANCHO_VENTANA / 2 - Constantes.ANCHO_JUGADOR / 2;
+        int centroY = Constantes.ALTO_VENTANA / 2 - Constantes.ALTO_JUGADOR / 2;
     
         g.setColor(Color.green);
         //g.fillRect(centroX, centroY, ANCHO_SPRITE, ALTO_SPRITE);

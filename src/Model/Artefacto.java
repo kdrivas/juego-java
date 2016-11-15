@@ -13,7 +13,8 @@ public class Artefacto extends ObjetoDeJuego {
 
     protected int espacio;
     protected String tipo;
-
+    private boolean meMovi;
+    
     /**
      * @return the nombre
      */
@@ -21,6 +22,7 @@ public class Artefacto extends ObjetoDeJuego {
         super();
         this.espacio = 0;
         this.caracterImp = 'A';
+        this.meMovi = false;
     }
 
     /**
@@ -53,6 +55,20 @@ public class Artefacto extends ObjetoDeJuego {
 
     public void mostrarDetalle() { 
 
+    }
+
+    /**
+     * @return the meMovi
+     */
+    public boolean isMeMovi() {
+        return meMovi;
+    }
+
+    /**
+     * @param meMovi the meMovi to set
+     */
+    public void setMeMovi(boolean meMovi) {
+        this.meMovi = meMovi;
     }
     
 

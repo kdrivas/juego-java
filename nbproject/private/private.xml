@@ -6,10 +6,10 @@
             <file>file:/C:/Users/Carlos/Documents/Juego/src/Controlador/GestorAvatar.java</file>
             <file>file:/C:/Users/Carlos/Documents/Juego/src/Controlador/GestorLaberinto.java</file>
             <file>file:/C:/Users/Carlos/Documents/Juego/src/Vista/VentanaJuego.java</file>
-            <file>file:/C:/Users/Carlos/Documents/Juego/src/Controlador/GestorJuego.java</file>
-            <file>file:/C:/Users/Carlos/Documents/Juego/src/Controlador/Constantes.java</file>
-            <file>file:/C:/Users/Carlos/Documents/Juego/src/Vista/HojaSprites.java</file>
-            <file>file:/C:/Users/Carlos/Documents/Juego/src/Vista/PantallaBienvenida.java</file>
+            <file>file:/C:/Users/Carlos/Documents/Juego/src/Model/Artefacto.java</file>
+            <file>file:/C:/Users/Carlos/Documents/Juego/src/Model/Laberinto.java</file>
+            <file>file:/C:/Users/Carlos/Documents/Juego/src/Controlador/GestorArtefactos.java</file>
+            <file>file:/C:/Users/Carlos/Documents/Juego/src/Vista/Juego.java</file>
         </group>
     </open-files>
 </project-private>

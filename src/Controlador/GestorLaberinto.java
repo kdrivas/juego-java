@@ -353,19 +353,27 @@ public class GestorLaberinto {
                     rec = new Rectangle(posX, posY, 48, 64);
                     g.drawRect(rec.x, rec.y, rec.width, rec.height);
                 }
-                
+                //this.arrLaberintos.get(nivel).imprimir();
             }
         }       
     }
     
     public String obtenerEstado(int x, int y, int nivel){
         if(x >= 0 && x < arrLaberintos.get(nivel).getM() && y >= 0 && y < arrLaberintos.get(nivel).getN()){
-            Celda celda = arrLaberintos.get(nivel).getCeldaLaberinto(x, y);      
-            return celda.getEstado();
+            Celda celda = arrLaberintos.get(nivel).getCeldaLaberinto(x, y);  
+            if(celda.getObjArtefacto() != null){
+                if(celda.getObjArtefacto() instanceof Arma)
+                    return "ARMA";
+                else if(celda.getObjArtefacto() instanceof Armadura)
+                    return "ARMADURA";
+                else if(celda.getObjArtefacto() instanceof Pocion)
+                    return "POCION";
+            }
+            else{
+                return celda.getEstado();
+            }
         }
-        else{
-            return "VACIO";
-        }
+        return "VACIO";
     }
     
     public Rectangle obtenerBorde( int posicionX, int posicionY, int anchoJugador, int altoJugador){

@@ -10,8 +10,8 @@ package Controlador;
  * @author Carlos
  */
 public class Constantes {
-    public static final int ANCHO_VENTANA = 1100;
-    public static final int ALTO_VENTANA = 600;
+    public static final int ANCHO_VENTANA = 966;
+    public static final int ALTO_VENTANA = 700;
     
     public static final int CENTRO_VENTANA_X = ANCHO_VENTANA / 2;
     public static final int CENTRO_VENTANA_Y = ALTO_VENTANA / 2;

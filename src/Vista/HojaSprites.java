@@ -21,20 +21,15 @@ public class HojaSprites {
     private static final int ANCHO_SPRITE = 48;
     private static final int ALTO_SPRITE = 64;
     
-    private int ancho;
-    private int alto;
-    
     private BufferedImage imagen;
     private HashMap<String, Sprite> hashMap;
     
-    public HojaSprites(String ruta, int ancho, int alto){
-        BufferedImage imagenHoja;
+    public HojaSprites(){
+        BufferedImage imagenHoja, imagenInformacion, menuSuperior;
         
-        imagenHoja = CargadorRecursos.cargarImagen(ruta);
-        
-        ancho = imagenHoja.getWidth();
-        alto = imagenHoja.getHeight();
-        
+        imagenHoja = CargadorRecursos.cargarImagen("../src/imagenes/todos.png");
+        imagenInformacion = CargadorRecursos.cargarImagenTransparente("../src/imagenes/menu1.png");
+        menuSuperior = CargadorRecursos.cargarImagenTransparente("../src/imagenes/menuSuperior.png");
         hashMap = new HashMap();
 //        grass = sheet.crop(48, 0, 48, 64);
 //        avatar = sheet.crop(192, 0, 48, 64);
@@ -44,6 +39,11 @@ public class HojaSprites {
 //        weapon = sheet.crop(288, 0, 48, 64);
 //        armor = sheet.crop(336, 0, 48, 64);
 //        potion = sheet.crop(384,0,48,64);
+        hashMap.put("MENU_SUPERIOR", new Sprite(menuSuperior));
+        hashMap.put("MENU_INFORMACION", new Sprite(imagenInformacion));
+        hashMap.put("ARMA", new Sprite(imagenHoja.getSubimage(288, 0, 48, 64)));
+        hashMap.put("ARMADURA", new Sprite(imagenHoja.getSubimage(336, 0, 48, 64)));
+        hashMap.put("POCION", new Sprite(imagenHoja.getSubimage(384, 0, 48, 64)));
         hashMap.put("PARED", new Sprite(imagenHoja.getSubimage(0, 0, 48, 64)));
         hashMap.put("ADENTRO", new Sprite(imagenHoja.getSubimage(48, 0, 48, 64)));
         hashMap.put("VACIO", new Sprite(imagenHoja.getSubimage(48, 0, 48, 64)));

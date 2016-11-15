@@ -45,12 +45,20 @@ public class VentanaJuego extends Canvas implements Runnable{
     private JFrame ventana;
     private Thread thread;
     
+    VentanaInformacion informacion;
+    
+    volatile GestorLaberinto gestorMapa;
+    GestorAvatar gestorAvatar;
+    GestorArtefactos gestorArtefactos;
+    
+    HojaSprites hoja = new HojaSprites();
+    
     public VentanaJuego(String titulo, int ancho, int alto){
         this.titulo = titulo;
-        this.ancho = ancho;
-        this.alto = alto;
+        this.ancho = Constantes.ANCHO_VENTANA;
+        this.alto = Constantes.ALTO_VENTANA;
         
-        setPreferredSize(new Dimension(ancho, alto));
+        setPreferredSize(new Dimension(this.ancho, this.alto));
         teclado = new Teclado();
         addKeyListener(teclado);
         funcionando = true;
@@ -68,13 +76,28 @@ public class VentanaJuego extends Canvas implements Runnable{
         ventana.pack();
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
+        
+        informacion = new VentanaInformacion(hoja);
+        
+        //Setteo gestor mapa
+        gestorMapa = new GestorLaberinto(hoja); 
+        gestorMapa.setNivel(0);
+        
+        //Sette gestor avatar
+        gestorAvatar = new GestorAvatar(hoja, gestorMapa.arrLaberintos.get(0).getIniX() * Constantes.ANCHO_JUGADOR, gestorMapa.arrLaberintos.get(0).getIniY() * Constantes.ALTO_JUGADOR);
+
+        //Setteo gestor artefactos
+        gestorArtefactos = new GestorArtefactos();
+        
+        //Aca creo lo que dibuja el mapa
+        createBufferStrategy(3);
     }
     
     //Los inicializo mis gestores
     public synchronized void inicializar(){
         //PRIMERO ENTRA A ESTE CONTRUCTOR, ACA ESTA EL KEYLISTENER
-    
-        ge = new GestorJuego();
+        gestorArtefactos.inicializar(gestorMapa);
+        
         thread = new Thread(this, "Graficos");
         thread.start();
 
@@ -96,26 +119,27 @@ public class VentanaJuego extends Canvas implements Runnable{
         teclado.actualizar();           
         
         //Aca si entra, esto llama a mi actualizador del gestor juego
-        ge.actualizar(teclado);
+        gestorMapa.actualizar(gestorAvatar);
+        gestorAvatar.actualizar(teclado, gestorMapa, gestorMapa.getNivel());    
     }
     
     //Lo mismo que actualizar(), contiene mi sd, que basicamente es mi renderizador donde se dibujara todo
     private void dibujar(){
         //Aca dibuja :D, esto si funca
         BufferStrategy buffer = getBufferStrategy();
-        
-        if(buffer == null){
-            createBufferStrategy(3);
-            return;
-        }
-        
+
         Graphics g = buffer.getDrawGraphics();
         
         g.setColor(Color.black);
         g.fillRect(0, 0, ancho, alto);
         
-        //ACAAA
-        ge.dibujar(g);
+        //Aca dibujas cualquier cosa
+        gestorMapa.dibujar(g, (int)gestorAvatar.getPosicionX(), (int)gestorAvatar.getPosicionY());
+        gestorAvatar.dibujar(g);
+        informacion.dibujar(g, gestorAvatar);
+        
+        g.setColor(Color.green);
+        //Termine de dibujar
         
         Toolkit.getDefaultToolkit().sync();
         

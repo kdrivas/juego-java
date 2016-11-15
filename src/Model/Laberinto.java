@@ -41,6 +41,9 @@ public class Laberinto {
                     if(this.getCeldaLaberinto(j, i).getObjEntidad() instanceof Avatar){
                         System.out.print('H');
                     }
+                    else if(this.getCeldaLaberinto(j, i).getObjArtefacto() != null){
+                        System.out.print('A');
+                    }
                     else
                         System.out.print('O');
                 } else if (a.equals("ANTERIOR")) {

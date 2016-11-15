@@ -57,27 +57,27 @@ public class Juego {
     }
 
     public void cargarArtefactos(ArrayList<Arma> armas, ArrayList<Armadura> armaduras, ArrayList<Pocion> pociones) {
-        GestorArtefactos g = new GestorArtefactos();
-        try {
-            XStream xstream = new XStream(new DomDriver());
-            FileReader fr = new FileReader("..\\src\\artefactos.txt");
-            g = (GestorArtefactos) xstream.fromXML(fr);
-            fr.close();
-        } catch (IOException e) {
-            System.out.println(e.toString());
-        }
-        for (int i = 0; i < g.getObjetos().size(); i++) {
-            if (g.getObjetos().get(i) instanceof Arma) {
-                Arma a = (Arma) g.getObjetos().get(i);
-                armas.add(a);
-            } else if (g.getObjetos().get(i) instanceof Armadura) {
-                Armadura a = (Armadura) g.getObjetos().get(i);
-                armaduras.add(a);
-            } else if (g.getObjetos().get(i) instanceof Pocion) {
-                Pocion a = (Pocion) g.getObjetos().get(i);
-                pociones.add(a);
-            }
-        }
+//        GestorArtefactos g = new GestorArtefactos();
+//        try {
+//            XStream xstream = new XStream(new DomDriver());
+//            FileReader fr = new FileReader("..\\src\\artefactos.txt");
+//            g = (GestorArtefactos) xstream.fromXML(fr);
+//            fr.close();
+//        } catch (IOException e) {
+//            System.out.println(e.toString());
+//        }
+//        for (int i = 0; i < g.getObjetos().size(); i++) {
+//            if (g.getObjetos().get(i) instanceof Arma) {
+//                Arma a = (Arma) g.getObjetos().get(i);
+//                armas.add(a);
+//            } else if (g.getObjetos().get(i) instanceof Armadura) {
+//                Armadura a = (Armadura) g.getObjetos().get(i);
+//                armaduras.add(a);
+//            } else if (g.getObjetos().get(i) instanceof Pocion) {
+//                Pocion a = (Pocion) g.getObjetos().get(i);
+//                pociones.add(a);
+//            }
+//        }
     }
 
     public void jugar() throws IOException {
