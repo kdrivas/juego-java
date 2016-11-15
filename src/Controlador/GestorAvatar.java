@@ -143,36 +143,36 @@ public class GestorAvatar {
             if (isEnMovimiento()) {
                 System.out.println("lalalalalala");
                 if (animacion % FRAMES > FRAMES / 2) {
-                    nombreSprite = "SIGUIENTE";
+                    nombreSprite = "JUGADOR_ARRIBA";
                 } else {
-                    nombreSprite = "ANTERIOR";
+                    nombreSprite = "JUGADOR_ARRIBA";
                 }
             }
         } else if (direccion == 's') {
             nombreSprite = "JUGADOR_ABAJO";
             if (isEnMovimiento()) {
                 if (animacion % FRAMES > FRAMES / 2) {
-                    nombreSprite = "SIGUIENTE";
+                    nombreSprite = "JUGADOR_ABAJO";
                 } else {
-                    nombreSprite = "ANTERIOR";
+                    nombreSprite = "JUGADOR_ABAJO";
                 }
             }
         } else if (direccion == 'o') {
             nombreSprite = "JUGADOR_IZQUIERDA";
             if (isEnMovimiento()) {
                 if (animacion % FRAMES > FRAMES / 2) {
-                    nombreSprite = "SIGUIENTE";
+                    nombreSprite = "JUGADOR_IZQUIERDA";
                 } else {
-                    nombreSprite = "ANTERIOR";
+                    nombreSprite = "JUGADOR_IZQUIERDA";
                 }
             }
         } else if (direccion == 'e') {
             nombreSprite = "JUGADOR_DERECHA";
             if (isEnMovimiento()) {
                 if (animacion % FRAMES > FRAMES / 2) {
-                    nombreSprite = "SIGUIENTE";
+                    nombreSprite = "JUGADOR_DERECHA";
                 } else {
-                    nombreSprite = "ANTERIOR";
+                    nombreSprite = "JUGADOR_DERECHA";
                 }
             }
         }
