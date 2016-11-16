@@ -36,7 +36,7 @@ public class VentanaJuego extends Canvas implements Runnable {
     private Teclado teclado;
     private JFrame ventana;
     private Thread thread;
-    VentanaInformacion informacion;
+    VentanaInformacion ventanaInformacion;
     
     volatile GestorLaberinto gestorMapa;
     GestorAvatar gestorAvatar;
@@ -44,6 +44,11 @@ public class VentanaJuego extends Canvas implements Runnable {
     GestorEnemigos gestorEnemigos;
     GestorAliado gestorAliados;
     HojaSprites hoja = new HojaSprites();
+
+    GestorJuego gestorJuego;
+    GestorInteractuar gestorInteractuar;
+    String estado;    
+    boolean flag = false;
 
     public VentanaJuego(String titulo, int ancho, int alto) {
         this.titulo = titulo;
@@ -64,20 +69,26 @@ public class VentanaJuego extends Canvas implements Runnable {
         ventana.pack();
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
-        informacion = new VentanaInformacion(hoja);
+        ventanaInformacion = new VentanaInformacion(hoja);
         //Setteo gestor mapa
         gestorMapa = new GestorLaberinto(hoja);
         gestorMapa.setNivel(0);
-        //Sette gestor avatar
-        gestorAvatar = new GestorAvatar(hoja, gestorMapa.arrLaberintos.get(0).getIniX() * Constantes.ANCHO_JUGADOR, gestorMapa.arrLaberintos.get(0).getIniY() * Constantes.ALTO_JUGADOR);
-        //Setteo gestor artefactos
+        //Setteo gestor artefactos        
         gestorArtefactos = new GestorArtefactos();
-        // Setteo Gestor Enemigo
+        gestorArtefactos.cargarArtefactos();
+        
+        //Sette gestor avatar
+        gestorAvatar = new GestorAvatar(hoja, gestorMapa.arrLaberintos.get(0).getIniX() * Constantes.ANCHO_JUGADOR, gestorMapa.arrLaberintos.get(0).getIniY() * Constantes.ALTO_JUGADOR, gestorArtefactos.getArmas().get(0));
+        // Setteo Gestor Enemigo        
         gestorEnemigos = new GestorEnemigos();
         //Setteo Gestor Aliado
         gestorAliados = new GestorAliado();
         //Aca creo lo que dibuja el mapa
         createBufferStrategy(3);
+        gestorJuego = new GestorJuego(hoja, gestorMapa, gestorAvatar, ventanaInformacion);
+        gestorInteractuar = new GestorInteractuar(hoja, gestorMapa, gestorAvatar, ventanaInformacion);
+    
+        estado = "ESTADO_JUEGO";
     }
 
     //Los inicializo mis gestores
@@ -101,12 +112,27 @@ public class VentanaJuego extends Canvas implements Runnable {
 
     //Basicamente llamo a una funcion actualizar del gestor juego por el momento contiene cosas relacionandas al mapa
     //y al movimiento del jugador
-    private void actualizar() {
-        //ESTO NO FUNCIONA COMO DEBERIA, DE HECHO NI SIQUIERA ENTRA SEGUN LOS PRINTF QUE HICE
-        teclado.actualizar();
-        //Aca si entra, esto llama a mi actualizador del gestor juego
-        gestorMapa.actualizar(gestorAvatar);
-        gestorAvatar.actualizar(teclado, gestorMapa, gestorMapa.getNivel());
+    private void actualizar() {        
+        teclado.actualizar();        
+        if(teclado.interactuar){
+            flag = true;
+        }
+        else if(teclado.abajo || teclado.arriba || teclado.derecha || teclado.izquierda){
+            flag = false;
+        }
+        if(flag){         
+            gestorInteractuar.actualizar(teclado);
+            if(gestorInteractuar.finInteractuar){
+                estado = "ESTADO_JUEGO";
+            }
+            else{
+                estado = "ESTADO_INTERACTUAR";
+            }
+        }
+        else{
+            estado = "ESTADO_JUEGO";
+            gestorJuego.actualizar(teclado);
+        }
     }
 
     //Lo mismo que actualizar(), contiene mi sd, que basicamente es mi renderizador donde se dibujara todo
@@ -117,10 +143,11 @@ public class VentanaJuego extends Canvas implements Runnable {
         g.setColor(Color.black);
         g.fillRect(0, 0, ancho, alto);
         //Aca dibujas cualquier cosa
-        gestorMapa.dibujar(g, (int) gestorAvatar.getPosicionX(), (int) gestorAvatar.getPosicionY());
-        gestorAvatar.dibujar(g);
-        informacion.dibujar(g, gestorAvatar);
-        g.setColor(Color.green);
+        if(estado.equals("ESTADO_JUEGO"))
+            gestorJuego.dibujar(g);
+        else if(estado.equals("ESTADO_INTERACTUAR")){
+            gestorInteractuar.dibujar(g);
+        }
         //Termine de dibujar
         Toolkit.getDefaultToolkit().sync();
         g.dispose();

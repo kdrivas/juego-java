@@ -45,7 +45,6 @@ public class GestorArtefactos implements Runnable{
     }
 
     public void inicializar(GestorLaberinto gestorMapa){
-        cargarArtefactos();
         agregarArmaduras(gestorMapa.arrLaberintos);
         agregarArmas(gestorMapa.arrLaberintos);
         agregarPociones(gestorMapa.arrLaberintos);

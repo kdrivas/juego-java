@@ -25,17 +25,27 @@ public class Teclado implements KeyListener{
     public boolean izquierda;
     public boolean derecha;
     public boolean salir;
+    public boolean mochila;
+    public boolean atacar;
+    public boolean huir;
+    public boolean interactuar;
     
     public Teclado(){
-        System.out.println("kjasdjas");
+        System.out.println("Cree teclado");
     }
     
     //Settea las teclas presionadas y liberadas dentro del arreglo de teclas
     public void actualizar(){
+        System.out.println("Estoy actualizando teclado");
+        
         arriba = teclas[KeyEvent.VK_W];
-        abajo = teclas[KeyEvent.VK_S];
-        derecha = teclas[KeyEvent.VK_D];
+        abajo = teclas[KeyEvent.VK_Z];
+        derecha = teclas[KeyEvent.VK_S];
         izquierda = teclas[KeyEvent.VK_A];
+        mochila = teclas[KeyEvent.VK_M];
+        atacar = teclas[KeyEvent.VK_X];
+        huir = teclas[KeyEvent.VK_H];
+        interactuar = teclas[KeyEvent.VK_I];
         salir = teclas[KeyEvent.VK_Q];
     }
     
@@ -46,12 +56,13 @@ public class Teclado implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("lkashdkljasd");
+        System.out.println("Presione teclado");
         teclas[e.getKeyCode()] = true;
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+        System.out.println("Libere teclado");
         teclas[e.getKeyCode()] = false;
     }
     

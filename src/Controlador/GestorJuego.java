@@ -15,37 +15,34 @@ import java.awt.image.BufferedImage;
  *
  * @author Carlos
  */
-public class GestorJuego{
+public class GestorJuego implements EstadoJuego{
 
-    VentanaInformacion informacion;
-    
+    VentanaInformacion ventanaInformacion;    
     GestorLaberinto gestorMapa;
     GestorAvatar gestorAvatar;
     //Como funciona la hoja de sprites es secundario, si funciona y solo carga un bufferedImage y lo corta
     HojaSprites hoja = new HojaSprites();
     
-    public GestorJuego(){
-        informacion = new VentanaInformacion(hoja);
-        gestorMapa = new GestorLaberinto(hoja); 
-        gestorAvatar = new GestorAvatar(hoja, gestorMapa.arrLaberintos.get(0).getIniX() * Constantes.ANCHO_JUGADOR, gestorMapa.arrLaberintos.get(0).getIniY() * Constantes.ALTO_JUGADOR);
-        gestorMapa.setNivel(0);
+    public GestorJuego(HojaSprites hoja, GestorLaberinto gestorMapa, GestorAvatar gestorAvatar, VentanaInformacion ventanaInformacion){
+        this.hoja = hoja;
+        this.gestorMapa = gestorMapa;
+        this.gestorAvatar = gestorAvatar;
+        this.ventanaInformacion = ventanaInformacion;   
     }
    
-    public void actualizar(Teclado teclado) {
-        
+    @Override
+    public void actualizar(Teclado teclado) {        
         //ESTO NO FUNCIONA, AL PARECER EL KEY LISTENER NO SE AÑADE CORRECTAMENTE A LA PANTALLA      
         gestorMapa.actualizar(gestorAvatar);
         gestorAvatar.actualizar(teclado, gestorMapa, gestorMapa.getNivel());       
     }
 
     //Dibuja todas las cosas, por el momento llama a gestorMapa y gestorAvatar
+    @Override
     public void dibujar(Graphics g) {
         gestorMapa.dibujar(g, (int)gestorAvatar.getPosicionX(), (int)gestorAvatar.getPosicionY());
         gestorAvatar.dibujar(g);
-        informacion.dibujar(g, gestorAvatar);
-        
-        System.out.println("X : " + gestorAvatar.getPosicionX());
-        System.out.println("Y : " + gestorAvatar.getPosicionY());
+        ventanaInformacion.dibujar(g, gestorAvatar);            
         
         g.setColor(Color.green);
     }
